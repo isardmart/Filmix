@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -10,14 +10,34 @@ import Login from "./views/Login";
 import Register from "./views/Register";
 import Secret from "./views/Secret";
 import Navbar from "./components/Navbar";
+import {URL} from './config';
+import axios from "axios";
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const login = () => {
+  const token = JSON.parse(localStorage.getItem('token'))
+
+  useEffect(()=>{
+  const verify_token =async()=>{
+    if (token ==null) setIsLoggedIn(false);
+    try{
+      axios.defaults.headers.common['Authorization']=token;
+      const res= await axios.post(`${URL}/users/verify_token`)
+      return res.data.ok ? login(token):logout()
+    }catch(e){
+      console.info(e)
+    }
+  };
+  verify_token();
+},[])
+
+  const login = (token) => {
+    token && localStorage.setItem('token',JSON.stringify(token));
     setIsLoggedIn(true);
   };
   const logout=()=>{
+    localStorage.removeItem('token');
     setIsLoggedIn(false);
   }
   return (

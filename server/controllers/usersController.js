@@ -26,5 +26,33 @@ const register = async (req, res) => {
     res.json({ ok: false, message: "Something went wrong", e });
   }
 };
+const login = async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password)
+    return res.json({ ok: false, message: "All fields required" });
+  if (!validator.isEmail(email))
+    return res.json({ ok: false, message: "Email invalid" });
+  try {
+    const user = await users.findOne({ email });
+    if (!user) return res.json({ ok: false, message: "Invalid credentials" });
+    const match = await argon2.verify(user.password, password);
+    if (match) {
+      const token = jwt.sign(user.toJSON(), jwt_secret, { expiresIn: "1h" });
+      res.json({ ok: true, message: "Welcome Back", token, email });
+    } else {
+      return res.json({ ok: false, message: "Invalid credentials" });
+    }
+  } catch (e) {
+    res.json({ ok: false, message: "Something went wrong", e });
+  }
+};
 
-module.exports = {register};
+const verify_token = (req, res) => {
+  const token = req.headers.authorization;
+  jwt.verify(token, jwt_secret, (e, succ) => {
+    e
+      ? res.json({ ok: false, message: "Something went wrong" })
+      : res.json({ ok: true, succ });
+  });
+};
+module.exports = { register, login , verify_token};

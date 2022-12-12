@@ -20,7 +20,7 @@ export default function Register(props) {
         password:form.password,
         password2:form.password2
       })
-      setMessage(res.data.message)
+      setMessage(res.data.message);
       if(res.data.ok){
         setTimeout(()=>{
           props.login()
@@ -32,7 +32,8 @@ export default function Register(props) {
   };
   useEffect(()=>{
     setTimeout(()=>{
-    },1500)
+      setMessage('')
+    },2000)
   },[message])
   return (
     <form
@@ -48,7 +49,7 @@ export default function Register(props) {
 
       <label>Confirm password</label>
       <input type="password" name="password2" />
-      
+
       <button>Register</button>
       <h4 className="message">{message}</h4>
     </form>
