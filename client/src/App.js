@@ -1,13 +1,28 @@
-import React from 'react';
-import{BrowserRouter as Router,Route,Redirect} from 'react-router-dom';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import Home from "./views/Home";
+import Login from "./views/Login";
+import Register from "./views/Register";
+import Secret from "./views/Secret";
+import Navbar from "./components/Navbar";
 
 export default function App() {
   return (
-    <Router>
-        <Route exact path='/' component={Home}/>
-        <Route exact path='/login' component={Login}/>
-        <Route exact path='/register' component={Register}/>
-        <Route exact path='/secret' component={Secret}/>
-    </Router>
-  )
+    <div>
+      <Navbar />
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home/>} />
+          <Route exact path="/login" element={<Login/>} />
+          <Route exact path="/register" element={<Register/>} />
+          <Route exact path="/secret" element={<Secret/>} />
+        </Routes>
+        </Router>
+    </div>
+  );
 }
