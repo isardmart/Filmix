@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
+import Usernavbar from "../components/Usernavbar";
 
-export default function MyList() {
+export default function MyList({logout}) {
   return (
-    <div>MyList</div>
-  )
+    <div>
+      <Usernavbar logout={logout} />
+    </div>
+  );
 }

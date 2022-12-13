@@ -1,13 +1,13 @@
 import React from 'react'
-import {pulp_fiction} from '../config'
-import Usernavbar from './Usernavbar'
+import {pulp_fiction,inglorious_basterds} from '../config'
 
-export default function Principal() {
+
+export default function Principal({logout}) {
+
   return (
     <div className='Principal'>
-        <Usernavbar />
-        <h1>This is the Principal component</h1>
         <img src={pulp_fiction} alt='pulp fiction'></img>
+        <img src={inglorious_basterds} alt='inglorious basterds'></img>
     </div>
   )
 }

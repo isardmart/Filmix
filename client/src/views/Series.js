@@ -1,7 +1,11 @@
 import React from 'react'
+import Usernavbar from '../components/Usernavbar'
 
-export default function Series() {
+export default function Series({logout}) {
   return (
-    <div>Series</div>
+    <div>
+      <Usernavbar logout={logout} />
+      
+    </div>
   )
 }

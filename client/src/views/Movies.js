@@ -1,7 +1,10 @@
-import React from 'react'
+import React from 'react';
+import Usernavbar from '../components/Usernavbar';
 
-export default function Movies() {
+export default function Movies({logout}) {
   return (
-    <div>Movies</div>
+    <div>
+      <Usernavbar logout={logout} />
+    </div>
   )
 }

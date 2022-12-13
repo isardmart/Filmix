@@ -76,7 +76,7 @@ export default function App() {
             path="/browse"
             element={
               isLoggedIn ? (
-                <Secret logout={logout} />
+                <Secret logout={logout}  />
               ) : (
                 <Navigate to="/" />
               )
@@ -85,22 +85,22 @@ export default function App() {
           <Route
             exact
             path="/series"
-            element={isLoggedIn ? <Series /> : <Navigate to="/register" />}
+            element={isLoggedIn ? <Series logout={logout} /> : <Navigate to="/login" />}
           />
           <Route
             exact
             path="/movies"
-            element={isLoggedIn ? <Movies /> : <Navigate to="/register" />}
+            element={isLoggedIn ? <Movies logout={logout} /> : <Navigate to="/login" />}
           />
           <Route
             exact
             path="/mylist"
-            element={isLoggedIn ? <MyList /> : <Navigate to="/register" />}
+            element={isLoggedIn ? <MyList logout={logout} /> : <Navigate to="/login" />}
           />
           <Route
             exact
             path="/settings"
-            element={isLoggedIn ? <Settings /> : <Navigate to="/register" />}
+            element={isLoggedIn ? <Settings logout={logout} /> : <Navigate to="/login" />}
           />
         </Routes>
       </Router>
