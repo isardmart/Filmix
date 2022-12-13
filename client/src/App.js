@@ -23,7 +23,7 @@ export default function App() {
 
   useEffect(() => {
     const verify_token = async () => {
-      if (token == null) setIsLoggedIn(false);
+      if (token == null) return setIsLoggedIn(false);
       try {
         axios.defaults.headers.common["Authorization"] = token;
         const res = await axios.post(`${URL}/users/verify_token`);
@@ -75,10 +75,10 @@ export default function App() {
             exact
             path="/browse"
             element={
-              !isLoggedIn ? (
-                <Navigate to="/browse" />
-              ) : (
+              isLoggedIn ? (
                 <Secret logout={logout} />
+              ) : (
+                <Navigate to="/" />
               )
             }
           />

@@ -38,6 +38,9 @@ body{
     font-size:xx-large;
     text-decoration: none;
 }
+#browse-element{
+    color:white
+}
 .Principal img{
     max-width: 100%;
 }
