@@ -21,9 +21,9 @@ const register = async (req, res) => {
       password: hash,
     };
     await users.create(newUser);
-    res.json({ ok: true, message: "Registered successfully" });
+    return res.json({ ok: true, message: "Registered successfully" });
   } catch (e) {
-    res.json({ ok: false, message: "Something went wrong", e });
+    return res.json({ ok: false, message: "Something went wrong", e });
   }
 };
 const login = async (req, res) => {
@@ -38,12 +38,12 @@ const login = async (req, res) => {
     const match = await argon2.verify(user.password, password);
     if (match) {
       const token = jwt.sign(user.toJSON(), jwt_secret, { expiresIn: "1h" });
-      res.json({ ok: true, message: "Welcome Back", token, email });
+      return res.json({ ok: true, message: "Welcome Back", token, email });
     } else {
       return res.json({ ok: false, message: "Invalid credentials" });
     }
   } catch (e) {
-    res.json({ ok: false, message: "Something went wrong", e });
+    return res.json({ ok: false, message: "Something went wrong", e });
   }
 };
 

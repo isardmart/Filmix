@@ -1,10 +1,14 @@
-import React from 'react'
+import React from "react";
+import Principal from "../components/Principal";
+
 
 export default function Secret(props) {
   return (
-    <div className='secret_page'>
-        <p> I am a secret</p>
-        <button onClick={()=>props.logout()}>Log Out</button>
+    <div className="secret_page">
+      <Principal />
+      <footer>
+        <button onClick={() => props.logout()}>Log Out</button>
+      </footer>
     </div>
-  )
+  );
 }

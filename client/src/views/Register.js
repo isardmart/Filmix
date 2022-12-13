@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { URL } from "../config";
+import Navbar from "../components/Navbar";
 
 export default function Register(props) {
   const[message,setMessage]=useState('')
@@ -36,6 +37,8 @@ export default function Register(props) {
     },2000)
   },[message])
   return (
+    <>
+    <Navbar />
     <form
       onChange={handleChange}
       onSubmit={handleSubmit}
@@ -53,5 +56,6 @@ export default function Register(props) {
       <button>Register</button>
       <h4 className="message">{message}</h4>
     </form>
+    </>
   );
 }

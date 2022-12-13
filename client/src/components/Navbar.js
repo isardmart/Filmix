@@ -7,9 +7,9 @@ export default function Navbar() {
       <NavLink
         exact
         to="/"
-        className={(navData) => (navData.isActive ? "active" : "navlink")}
+        className='filmix'
       >
-        Home
+        FILMIX
       </NavLink>
       <ul>
         <NavLink
