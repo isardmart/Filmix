@@ -1,4 +1,5 @@
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const express = require('express'),
     app = express(),
@@ -27,6 +28,13 @@ async function connecting(){
 connecting();
 
 app.use(cors());
+
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
 
 app.use('/users', require('./routes/usersRoute.js'))
 
