@@ -31,6 +31,6 @@ app.use(cors());
 
 app.use('/users', require('./routes/usersRoute.js'))
 
-app.use('/movies', require('./routes/moviesRoute.js'))
+app.use('/media', require('./routes/mediaRoute.js'))
 
 app.listen(port,()=>console.log(`🚀🚀🚀 Server listening on port ${port}`))

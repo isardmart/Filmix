@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import { URL } from '../config';
 import Usernavbar from '../components/Usernavbar'
 
-const Movies = ({logout}) => {
+const Episode = ({logout}) => {
   const [ error, setError ] = useState('');
   const [ isReady, setIsReady ] = useState(false);
   const [ loading, setLoading ] = useState(false);
@@ -26,7 +25,7 @@ const Movies = ({logout}) => {
     try {
       const res = await axios.post(url,{title});
       let { Title, Year, Error,Type } = res.data.movie;
-      if(Type!=='movie'){
+      if(Type!=='episode'){
          setError(`Seems that you're searching a ${Type}`);
          return setIsReady(true);
       };
@@ -39,7 +38,6 @@ const Movies = ({logout}) => {
       setIsReady(true);
     }
   };
-  
 
   return (
     <div>
@@ -62,4 +60,4 @@ const Movies = ({logout}) => {
   );
 };
 
-export default Movies;
+export default Episode;

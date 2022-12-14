@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const controller = require("../controllers/moviesController");
+const controller = require("../controllers/mediaController");
 
 router.post('/search',controller.search);
 

@@ -13,7 +13,7 @@ import { URL } from "./config";
 import axios from "axios";
 import Series from "./views/Series";
 import Movies from "./views/Movies";
-import MyList from "./views/MyList";
+import Episode from "./views/Episodes";
 import Settings from "./views/Settings";
 
 export default function App() {
@@ -94,8 +94,8 @@ export default function App() {
           />
           <Route
             exact="true"
-            path="/mylist"
-            element={isLoggedIn ? <MyList logout={logout} /> : <Navigate to="/login" />}
+            path="/episodes"
+            element={isLoggedIn ? <Episode logout={logout} /> : <Navigate to="/login" />}
           />
           <Route
             exact="true"

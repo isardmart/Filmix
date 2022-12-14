@@ -46,8 +46,8 @@ export default function Usernavbar({ logout}) {
         <NavLink exact='true' to="/movies">
           Movies
         </NavLink>
-        <NavLink exact='true' to="/mylist">
-          MyList
+        <NavLink exact='true' to="/episodes">
+          Episodes
         </NavLink>
       </ul>
       <button onClick={handleLogout}>Log Out</button>
