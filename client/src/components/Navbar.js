@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <div className="navbar">
       <NavLink
-        exact
+        exact='true'
         to="/"
         className='filmix'
       >
@@ -13,14 +13,14 @@ export default function Navbar() {
       </NavLink>
       <ul>
         <NavLink
-          exact
+          exact='true'
           to="/login"
           className={(navData) => (navData.isActive ? "active" : "navlink")}
         >
           Login
         </NavLink>
         <NavLink
-          exact
+          exact='true'
           to="/register"
           className={(navData) => (navData.isActive ? "active" : "navlink")}
         >

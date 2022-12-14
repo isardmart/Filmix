@@ -43,10 +43,10 @@ export default function Login(props) {
       className="form_container"
     >
       <label>Email</label>
-      <input type="email" defaultValue='a@a.com'  name="email" />
+      <input type="email"  name="email" />
 
       <label>Password</label>
-      <input type="password" title='a'  name="password" />
+      <input type="password"  name="password" />
 
       <button>Login</button>
       <h4 className="message">{message}</h4>

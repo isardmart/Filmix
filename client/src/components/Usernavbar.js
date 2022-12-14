@@ -33,20 +33,20 @@ export default function Usernavbar({ logout}) {
   return (
     <>
     <div className={colorChange ? 'navbar colorChange' : 'navbar'} >
-      <NavLink exact to="/browse" className="filmix">
+      <NavLink exact='true' to="/browse" className="filmix">
         FILMIX
       </NavLink>
       <ul>
-        <NavLink exact to="/browse">
+        <NavLink exact='true' to="/browse">
           Home
         </NavLink>
-        <NavLink exact to="/series">
+        <NavLink exact='true' to="/series">
           Series
         </NavLink>
-        <NavLink exact to="/movies">
+        <NavLink exact='true' to="/movies">
           Movies
         </NavLink>
-        <NavLink exact to="/mylist">
+        <NavLink exact='true' to="/mylist">
           MyList
         </NavLink>
       </ul>

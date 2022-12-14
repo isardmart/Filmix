@@ -49,19 +49,19 @@ export default function App() {
       <Router>
         <Routes>
           <Route
-            exact
+            exact="true"
             path="/"
             element={isLoggedIn ? <Navigate to="/browse" /> : <Home />}
           />
           <Route
-            exact
+            exact="true"
             path="/login"
             element={
               isLoggedIn ? <Navigate to="/browse" /> : <Login login={login} />
             }
           />
           <Route
-            exact
+            exact="true"
             path="/register"
             element={
               isLoggedIn ? (
@@ -72,7 +72,7 @@ export default function App() {
             }
           />
           <Route
-            exact
+            exact="true"
             path="/browse"
             element={
               isLoggedIn ? (
@@ -83,22 +83,22 @@ export default function App() {
             }
           />
           <Route
-            exact
+            exact="true"
             path="/series"
             element={isLoggedIn ? <Series logout={logout} /> : <Navigate to="/login" />}
           />
           <Route
-            exact
+            exact="true"
             path="/movies"
             element={isLoggedIn ? <Movies logout={logout} /> : <Navigate to="/login" />}
           />
           <Route
-            exact
+            exact="true"
             path="/mylist"
             element={isLoggedIn ? <MyList logout={logout} /> : <Navigate to="/login" />}
           />
           <Route
-            exact
+            exact="true"
             path="/settings"
             element={isLoggedIn ? <Settings logout={logout} /> : <Navigate to="/login" />}
           />
