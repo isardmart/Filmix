@@ -11,7 +11,7 @@ export default function Navbar() {
       >
         FILMIX
       </NavLink>
-      <ul>
+      <ul className="navlink">
         <NavLink
           exact='true'
           to="/login"

@@ -35,7 +35,7 @@ export default function Login(props) {
     },2000)
   },[message])
   return (
-    <>
+    <div className="home">
     <Navbar />
     <form
       onChange={handleChange}
@@ -51,6 +51,6 @@ export default function Login(props) {
       <button>Login</button>
       <h4 className="message">{message}</h4>
     </form>
-    </>
+    </div>
   );
 }
