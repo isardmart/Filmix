@@ -7,7 +7,7 @@ export default function Usernavbar({ logout}) {
       useEffect(()=>{
         setTimeout(()=>{
           setMessage(<></>)
-        },9000)
+        },8000)
       },[message])
 
   const handleLogout = (e) => {
@@ -36,7 +36,7 @@ export default function Usernavbar({ logout}) {
       <NavLink exact='true' to="/browse" className="filmix">
         FILMIX
       </NavLink>
-      <ul>
+      <ul className="navlink">
         <NavLink exact='true' to="/browse">
           Home
         </NavLink>

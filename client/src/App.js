@@ -5,7 +5,6 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import Home from "./views/Home";
 import Login from "./views/Login";
 import Register from "./views/Register";
 import Secret from "./views/Secret";
@@ -51,7 +50,7 @@ export default function App() {
           <Route
             exact="true"
             path="/"
-            element={isLoggedIn ? <Navigate to="/browse" /> : <Home />}
+            element={isLoggedIn ? <Navigate to="/browse" /> : <Login login={login} />}
           />
           <Route
             exact="true"

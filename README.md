@@ -4,8 +4,8 @@ Deployment made on:
 https://filmix.vercel.app/
 
 Technologies used:
-- Client Side: #React
-- Server Side: #Express
+- Client Side: React
+- Server Side: Express
 
 Programing Languages involved:
 - JavaScript

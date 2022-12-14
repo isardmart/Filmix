@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { URL } from "../config";
 import Navbar from "../components/Navbar";
+import { Link } from "react-router-dom";
 
 export default function Register(props) {
   const[message,setMessage]=useState('')
@@ -44,17 +45,20 @@ export default function Register(props) {
       onSubmit={handleSubmit}
       className="form_container"
     >
-      <label>Email</label>
-      <input type="email" name="email" />
+        <h1>Register</h1>
 
-      <label>Password</label>
-      <input type="password" name="password" />
+      <input type="email" placeholder="Email or Phone number" name="email" />
 
-      <label>Confirm password</label>
-      <input type="password" name="password2" />
+      <input type="password" placeholder="Password" name="password" />
+
+      <input type="password" placeholder="Confirm Passsword" name="password2" />
+      <h4 className="message">{message}</h4>
 
       <button>Register</button>
-      <h4 className="message">{message}</h4>
+      <p>
+          Already have an account?
+        <Link className="formlink" exact='true' to='/login' >Log in</Link>
+        </p>
     </form>
     </div>
   );

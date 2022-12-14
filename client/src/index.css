@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    font-family:'Courier New', Courier, monospace;
+    font-family:Arial, Helvetica, sans-serif;
     width: 100vw;
 }
 .navbar{
@@ -17,6 +17,7 @@ body{
     padding-right: 100px;
     transition: 1s;
 }
+
 .colorChange{
     background-color: black;
 }
@@ -27,20 +28,22 @@ body{
     justify-content: space-evenly;
 }
 
-.navbar ul a{
+.navlink a{
     padding-inline: 15px;
     margin-inline: 10px;
     right: 0px;
     width: 70%;
     height: 100%;
-    color: green;
-    background-color: greenyellow;
+    color: white;
+    background-color: rgb(255, 0, 0);
     border-radius: 20px;
+    text-decoration: none;
 }
 .filmix{
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size:xx-large;
     text-decoration: none;
+    color: rgb(255, 0, 0);
 }
 #browse-element{
     color:white
@@ -50,22 +53,58 @@ body{
     min-height:90vh;
 }
 .form_container{
-    width: 30%;
-    margin: 10vh 35%;
+    color: white;
+    width: 20vw;
+    margin: 20vh auto 0 auto;
+    height: 30vh;
+    justify-self: center;
     display: flex;
     flex-direction: column;
-    border: 1px solid gray;
+    border: 1px solid rgba(0, 0, 0, 0.057);
     padding: 2%;
-    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.67);
 }
-.homelink{
-    width: 30%;
-    margin: 10vh 35%;
+.form_container h1{
+    padding-left: 14%;
+}
+.form_container p{
+    text-decoration: none;
     display: flex;
-    flex-direction: column;
-    border: 1px solid gray;
-    padding: 2%;
+    justify-content: space-around;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.formlink{
+    text-decoration: none;
+    color:red;
+}
+.formlink:hover{
+    color:rgb(255, 136, 81)
+}
+.form_container input{
+    color: white;
+    background-color: rgba(62, 62, 62, 0.984);
+    height:5vh;
+    width:14vw;
+    align-self: center;
+    border: none;
     border-radius: 5px;
+    transition: 0.5s;
+    padding: 2%;
+}
+.form_container button{
+    background-color: red;
+    height:6vh;
+    width:15vw;
+    align-self: center;
+    border: none;
+    border-radius: 5px;
+    transition: 0.5s;
+    padding: 2%;
+}
+.form_container button:hover{
+    scale: 1.10;
+    color: black;
 }
 
 label, input{
@@ -91,10 +130,13 @@ button{
     justify-content: center;
 }
 
-.byebye{
+.hellobye{
+    top:0px;
+    position:fixed;
     height: 100vh;
+    width: 100vw;
     background-color: black;
-    color:greenyellow;
+    color:red;
     display: flex;
     justify-content: center;
     font-size: xx-large;

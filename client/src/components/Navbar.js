@@ -11,22 +11,6 @@ export default function Navbar() {
       >
         FILMIX
       </NavLink>
-      <ul className="navlink">
-        <NavLink
-          exact='true'
-          to="/login"
-          className={(navData) => (navData.isActive ? "active" : "navlink")}
-        >
-          Login
-        </NavLink>
-        <NavLink
-          exact='true'
-          to="/register"
-          className={(navData) => (navData.isActive ? "active" : "navlink")}
-        >
-          Register
-        </NavLink>
-      </ul>
     </div>
   );
 }
