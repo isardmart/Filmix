@@ -82,11 +82,6 @@ export default function App() {
           />
           <Route
             exact="true"
-            path="/*"
-            element={isLoggedIn ? <Navigate to="/browse" /> : <Login login={login} />}
-          />
-          <Route
-            exact="true"
             path="/login"
             element={
               isLoggedIn ? <Navigate to="/browse" /> : <Login login={login} />

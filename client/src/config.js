@@ -1,4 +1,4 @@
-const URL = 'https://filmix.vercel.app/'
+const URL = 'https://filmix.vercel.app'
 const imgURL = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2'
 const imgURL2='https://image.tmdb.org/t/p/w220_and_h330_face'
 

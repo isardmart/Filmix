@@ -8,7 +8,7 @@ const express = require('express'),
     mongoose.set('strictQuery', false);
 
 require('dotenv').config();
-const port=process.env.PORT || 4040;
+const port=process.env.PORT || 4000;
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
