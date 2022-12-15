@@ -5,6 +5,14 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+
+ // core version + navigation, pagination modules:
+ import Swiper, { Navigation, Pagination } from 'swiper';
+ // import Swiper and modules styles
+ import 'swiper/css';
+ import 'swiper/css/navigation';
+ import 'swiper/css/pagination';
+
 import Login from "./views/Login";
 import Register from "./views/Register";
 import Secret from "./views/Secret";
@@ -12,10 +20,30 @@ import { URL } from "./config";
 import axios from "axios";
 import Series from "./views/Series";
 import Movies from "./views/Movies";
-import Episode from "./views/Episodes";
 import Settings from "./views/Settings";
 
 export default function App() {
+  const swiper = new Swiper('.swiper', {
+    // Optional parameters
+    direction: 'vertical',
+    loop: true,
+  
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const token = JSON.parse(localStorage.getItem("token"));
@@ -44,12 +72,17 @@ export default function App() {
     setIsLoggedIn(false);
   };
   return (
-    <div>
+    <div className="App">
       <Router>
         <Routes>
           <Route
             exact="true"
             path="/"
+            element={isLoggedIn ? <Navigate to="/browse" /> : <Login login={login} />}
+          />
+          <Route
+            exact="true"
+            path="/*"
             element={isLoggedIn ? <Navigate to="/browse" /> : <Login login={login} />}
           />
           <Route
@@ -90,11 +123,6 @@ export default function App() {
             exact="true"
             path="/movies"
             element={isLoggedIn ? <Movies logout={logout} /> : <Navigate to="/login" />}
-          />
-          <Route
-            exact="true"
-            path="/episodes"
-            element={isLoggedIn ? <Episode logout={logout} /> : <Navigate to="/login" />}
           />
           <Route
             exact="true"

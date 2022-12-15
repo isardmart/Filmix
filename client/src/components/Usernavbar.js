@@ -37,17 +37,11 @@ export default function Usernavbar({ logout}) {
         FILMIX
       </NavLink>
       <ul className="navlink">
-        <NavLink exact='true' to="/browse">
-          Home
-        </NavLink>
         <NavLink exact='true' to="/series">
           Series
         </NavLink>
         <NavLink exact='true' to="/movies">
           Movies
-        </NavLink>
-        <NavLink exact='true' to="/episodes">
-          Episodes
         </NavLink>
       </ul>
       <button onClick={handleLogout}>Log Out</button>
