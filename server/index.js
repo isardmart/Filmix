@@ -28,7 +28,7 @@ async function connecting(){
         });
         console.log('💡Connected to the DB')
     }catch(e){
-        console.log('ERROR: Your DB is not running')
+        console.error('ERROR: Your DB is not running',e)
     }
 };
 
