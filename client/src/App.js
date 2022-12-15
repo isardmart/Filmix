@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
  // core version + navigation, pagination modules:
- import Swiper, { Navigation, Pagination } from 'swiper';
+ import Swiper from 'swiper';
  // import Swiper and modules styles
  import 'swiper/css';
  import 'swiper/css/navigation';
