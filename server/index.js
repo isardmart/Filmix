@@ -12,6 +12,7 @@ const port = process.env.PORT || 4000;
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", '*');//https://filmix.vercel.app
+    res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
     res.header(
       "Access-Control-Allow-Headers",
       "Origin, X-Requested-With, Content-Type, Accept"
