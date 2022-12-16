@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const search= async (req,res) => {
     const {imdbid} =req.body;
-      let url = `https://api.themoviedb.org/3/find/${imdbid}?api_key=${process.env.apikey2}&language=en-US&external_source=imdb_id`;
+      let url = `https://api.themoviedb.org/3/find/${imdbid}?api_key=${apikey2}&language=en-US&external_source=imdb_id`;
       try {
         const fetch = await axios.get(url);
         return res.json({ ok:true, media:fetch.data});
@@ -11,7 +11,7 @@ const search= async (req,res) => {
       }
     };
 const trending=async(req,res)=>{
-  let url =`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.apikey2}`
+  let url =`https://api.themoviedb.org/3/trending/all/day?api_key=${apikey2}`
   try {
     const fetch =await axios.get(url);
     return res.json({ ok:true, media:fetch.data});
