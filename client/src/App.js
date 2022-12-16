@@ -16,7 +16,7 @@ import {
 import Login from "./views/Login";
 import Register from "./views/Register";
 import Secret from "./views/Secret";
-import { URL } from "../../server/config.js";
+import { URL } from "./config";
 import axios from "axios";
 import Series from "./views/Series";
 import Movies from "./views/Movies";

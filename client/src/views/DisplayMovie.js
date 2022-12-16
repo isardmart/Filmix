@@ -1,5 +1,5 @@
 import React from 'react';
-import { imgURL } from "../../../server/config";
+import { imgURL } from "../config";
 
 
 export default function DisplayMovie({media,media2}) {
