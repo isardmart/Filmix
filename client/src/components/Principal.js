@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { URL } from "../config";
-import { pulp_fiction } from "../config";
+import { URL } from "../../../server/config";
+import { pulp_fiction } from "../../server/config.js";
 import Card from "./Card";
 
 export default function Principal() {

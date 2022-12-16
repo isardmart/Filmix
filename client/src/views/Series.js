@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { URL } from "../config";
+import { URL } from "../../../server/config";
 import Usernavbar from "../components/Usernavbar";
 import DisplaySeries from "./DisplaySeries";
 

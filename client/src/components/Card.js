@@ -1,5 +1,5 @@
 import React from 'react';
-import { imgURL2 } from '../config';
+import { imgURL2 } from "../../../server/config";
 
 export default function Cards({...value}) {
   let {backdrop_path, title, vote_average, name}=value;

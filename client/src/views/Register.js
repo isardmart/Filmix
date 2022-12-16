@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import { URL } from "../config";
+import { URL } from "../../../server/config";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 

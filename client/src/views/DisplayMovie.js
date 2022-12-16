@@ -1,5 +1,6 @@
-import React from 'react'
-import { imgURL } from '../config'
+import React from 'react';
+import { imgURL } from "../../../server/config";
+
 
 export default function DisplayMovie({media,media2}) {
     let {
