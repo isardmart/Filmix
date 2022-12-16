@@ -1,4 +1,3 @@
-const bodyParser= require('body-parser')
 const path = require("path");
 
 const express = require("express"),
@@ -21,8 +20,8 @@ app.use((req, res, next) => {
   });
   
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, '../client/build')));
