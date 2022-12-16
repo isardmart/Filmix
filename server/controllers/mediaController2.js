@@ -7,7 +7,7 @@ const search= async (req,res) => {
         const fetch = await axios.get(url);
         return res.json({ ok:true, media:fetch.data});
       } catch (error) {
-        return res.error(error);
+        return res.json(error);
       }
     };
 const trending=async(req,res)=>{
@@ -16,7 +16,7 @@ const trending=async(req,res)=>{
     const fetch =await axios.get(url);
     return res.json({ ok:true, media:fetch.data});
   } catch (error) {
-    return res.error(error)
+    return res.json(error)
   }
 }
   

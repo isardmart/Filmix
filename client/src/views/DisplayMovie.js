@@ -19,3 +19,4 @@ export default function DisplayMovie({media,media2}) {
     </div>
   )
 }
+//{poster_path ? (<img .... />) : null}
