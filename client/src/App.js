@@ -23,27 +23,7 @@ import Movies from "./views/Movies";
 import Settings from "./views/Settings";
 
 export default function App() {
-  const swiper = new Swiper('.swiper', {
-    // Optional parameters
-    direction: 'vertical',
-    loop: true,
   
-    // If we need pagination
-    pagination: {
-      el: '.swiper-pagination',
-    },
-  
-    // Navigation arrows
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  
-    // And if we need scrollbar
-    scrollbar: {
-      el: '.swiper-scrollbar',
-    },
-  });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const token = JSON.parse(localStorage.getItem("token"));

@@ -9,6 +9,7 @@ export default function Principal() {
 
   const findTrendings = async () => {
     let url = `${URL}/media2/trending`;
+    console.log(url)
     try {
       const res2 = await axios.get(url);
       setTrends(res2.data.media.results);

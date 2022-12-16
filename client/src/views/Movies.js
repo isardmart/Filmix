@@ -40,6 +40,7 @@ const Movies = ({ logout }) => {
     } catch (error) {
       setError(error.message);
       setIsReady(true);
+      console.error(error);
     }
   };
   const findPoster = async (imdbid) => {
