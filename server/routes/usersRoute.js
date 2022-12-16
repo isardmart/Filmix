@@ -1,4 +1,4 @@
-const router = require("../../client/node_modules/@types/express").Router();
+const router = require('express').Router();
 const controller = require("../controllers/usersController");
 
 router.post("/register", controller.register);

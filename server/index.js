@@ -1,7 +1,7 @@
-const bodyParser = require("../client/node_modules/@types/body-parser");
+const bodyParser= require('body-parser')
 const path = require("path");
 
-const express = require("../client/node_modules/@types/express"),
+const express = require("express"),
   app = express(),
   cors = require("cors"),
   mongoose = require("mongoose");
