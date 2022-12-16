@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": false,
+  "homepage": "https://filmix.vercel.app",
   "dependencies": {
     "@headlessui/react": "^1.7.5",
     "@heroicons/react": "^2.0.13",
