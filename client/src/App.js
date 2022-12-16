@@ -6,13 +6,6 @@ import {
   Navigate,
 } from "react-router-dom";
 
- // core version + navigation, pagination modules:
- import Swiper from 'swiper';
- // import Swiper and modules styles
- import 'swiper/css';
- import 'swiper/css/navigation';
- import 'swiper/css/pagination';
-
 import Login from "./views/Login";
 import Register from "./views/Register";
 import Secret from "./views/Secret";
@@ -103,6 +96,11 @@ export default function App() {
             exact="true"
             path="/settings"
             element={isLoggedIn ? <Settings logout={logout} /> : <Navigate to="/login" />}
+          />
+          <Route
+            exact="true"
+            path="/*"
+            element={isLoggedIn ? <Navigate to="/browse" /> : <Login login={login} />}
           />
         </Routes>
       </Router>
