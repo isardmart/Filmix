@@ -11,7 +11,7 @@ require("dotenv").config();
 const port = process.env.PORT || 4000;
 
 app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", 'https://filmix.vercel.app'||'http://localhost:3000');
+    res.setHeader("Access-Control-Allow-Origin", '*');
     res.header(
       "Access-Control-Allow-Headers",
       "Origin, X-Requested-With, Content-Type, Accept"
