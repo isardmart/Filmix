@@ -9,6 +9,9 @@ mongoose.set("strictQuery", false);
 require("dotenv").config();
 const port = process.env.PORT || 4000;
 
+app.use(cors());
+
+
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", '*');//https://filmix.vercel.app
     res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
@@ -18,7 +21,7 @@ app.use((req, res, next) => {
     );
     next();
   });
-  
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -44,7 +47,6 @@ async function connecting() {
 
 connecting();
 
-app.use(cors());
 
 app.use("/users", require("./routes/usersRoute.js"));
 

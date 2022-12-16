@@ -11,7 +11,8 @@ const search= async (req,res) => {
       }
     };
 const trending=async(req,res)=>{
-  let url =`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.apikey2}`
+  const {trending}=req.body
+  let url =`https://api.themoviedb.org/3/${trending}/all/day?api_key=${process.env.apikey2}`;
   try {
     const fetch =await axios.get(url);
     return res.json({ ok:true, media:fetch.data});

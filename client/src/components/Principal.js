@@ -7,17 +7,18 @@ import Card from "./Card";
 export default function Principal() {
   const [trends, setTrends] = useState([]);
 
-  const findTrendings = async () => {
+  const findTrendings = async (trending) => {
     let url = `${URL}/media2/trending`;
+    console.log(url)
     try {
-      const res2 = await axios.get(url);
+      const res2 = await axios.post(url,{trending});
       setTrends(res2.data.media.results);
     } catch (error) {
       console.error(error);
     }
   };
   useEffect(() => {
-    findTrendings();
+    findTrendings('trending');
   }, []);
 
   return (
