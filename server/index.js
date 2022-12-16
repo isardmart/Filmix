@@ -10,6 +10,16 @@ mongoose.set("strictQuery", false);
 require("dotenv").config();
 const port = process.env.PORT || 4000;
 
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "https://filmix.vercel.app");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+  });
+  
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
