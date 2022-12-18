@@ -5,7 +5,7 @@ import Usernavbar from '../components/Usernavbar';
 export default function Secret({logout}) {
 
   return (
-    <div className="secret_page">
+    <div className="flex flex-col">
       <Usernavbar logout={logout} />
       <Principal />
     </div>

@@ -49,7 +49,7 @@ export default function Register(props) {
       <form
         onChange={handleChange}
         onSubmit={handleSubmit}
-        className="text-white shadow-md shadow-slate-700 gap-3 rounded-md w-[30vw] p-6 flex flex-col self-center m-auto"
+        className="sm:w-[70vw] md:w-[40vw] lg:w-[30vw] text-white shadow-md shadow-slate-700 gap-3 rounded-md p-6 flex flex-col self-center m-auto"
       >
         <h1 className="font-bold text-3xl pb-4">Register</h1>
 
