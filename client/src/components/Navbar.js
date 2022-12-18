@@ -7,7 +7,7 @@ export default function Navbar() {
       <NavLink
         exact='true'
         to="/"
-        style={{ fontFamily: "'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif" }}
+        style={{ fontFamily: 'Impact' }}
         className="sticky filmix font-impact text-3xl px-15 py-10 mx-10 right-0 w-70 h-full text-red-500 rounded-md text-decoration-none"
       >
         FILMIX
