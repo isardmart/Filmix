@@ -3,6 +3,7 @@ import axios from "axios";
 import { URL } from "../config";
 import { pulp_fiction } from "../config";
 import Card from "./Card";
+import ResponsiveSlider from "./ResponsiveSlider.js";
 
 export default function Principal() {
   const [trends, setTrends] = useState([]);
@@ -23,6 +24,7 @@ export default function Principal() {
 
   return (
     <div>
+      <ResponsiveSlider trends={trends}/>
       <div className="Principal overflow-hidden ">
         <img src={pulp_fiction} alt="pulp fiction"></img>
       </div>

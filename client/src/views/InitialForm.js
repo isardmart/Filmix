@@ -4,9 +4,9 @@ import { URL } from "../config";
 import Hello from "./Hello";
 import { Link } from "react-router-dom";
 
-export default function InitialForm({login}) {
+export default function InitialForm({ login }) {
   const [message, setMessage] = useState("");
-  const[hello,setHello]=useState('');
+  const [hello, setHello] = useState("");
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -24,7 +24,7 @@ export default function InitialForm({login}) {
       setMessage(res.data.message);
       if (res.data.ok) {
         document.body.style.overflow = "hidden";
-        setHello(<Hello/>);
+        setHello(<Hello />);
         document.body.style.overflow = "scroll";
         setTimeout(() => {
           login(res.data.token);
@@ -40,22 +40,42 @@ export default function InitialForm({login}) {
     }, 2000);
   }, [message]);
   return (
-    <div>
-        {hello}
+    <div className="pt-[4vh]" >
+      {hello}
       <form
         onChange={handleChange}
         onSubmit={handleSubmit}
-        className="form_container"
+        className="sm:w-[70vw] md:w-[40vw] lg:w-[30vw] text-white shadow-md shadow-slate-700 gap-3 rounded-md p-6 flex flex-col self-center m-auto"
       >
-        <h1>Log in</h1>
-        <input type="email" placeholder="Email or Phone number" name="email" />
-        <input type="password" placeholder="Password" name="password" />
+        <h1 className="font-bold text-3xl pb-4">Log in</h1>
+        <input
+          type="email"
+          placeholder="Email or Phone number"
+          name="email"
+          className="bg-gray-800 h-[5h] w-[14w] align-self-center rounded-md transition-all-500 p-2"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          className="bg-gray-800 h-[5h] w-[14w] align-self-center rounded-md transition-all-500 p-2"
+        />
         <h4>{message}</h4>
-        <button>Login</button>
-        <p>
+        <button className="bg-red-500 h-[6h] w-[15w] align-self-center rounded-md transition-all-500 hover:transition-all-1000 p-2 hover:scale-110 hover:text-black">
+          Login
+        </button>
+        <div >
+          <p className="flex justify-around pr-5 pl-5">
             Still without an account?
-        <Link className="formlink" exact='true' to='/register' >Suscribe now Free!</Link>
-        </p>
+            <Link
+              className="text-decoration-none text-red-500 hover:text-orange-500"
+              exact="true"
+              to="/register"
+            >
+              Suscribe now Free!
+            </Link>
+          </p>
+        </div>
       </form>
     </div>
   );

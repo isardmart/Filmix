@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 import { URL } from "../config";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 
 export default function Register(props) {
-  const[message,setMessage]=useState('')
+  const [message, setMessage] = useState("");
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -14,52 +14,84 @@ export default function Register(props) {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res=await axios.post(`${URL}/users/register`,{
-        email:form.email,
-        password:form.password,
-        password2:form.password2
-      })
+      const res = await axios.post(`${URL}/users/register`, {
+        email: form.email,
+        password: form.password,
+        password2: form.password2,
+      });
       setMessage(res.data.message);
-      if(res.data.ok){
-        setTimeout(()=>{
-          props.login()
-        },1500)
+      if (res.data.ok) {
+        setTimeout(() => {
+          props.login();
+        }, 1500);
       }
     } catch (err) {
       console.info(err);
     }
   };
-  useEffect(()=>{
-    setTimeout(()=>{
-      setMessage('')
-    },2000)
-  },[message])
+  useEffect(() => {
+    setTimeout(() => {
+      setMessage("");
+    }, 2000);
+  }, [message]);
   return (
-    <div className="home">
-    <Navbar />
-    <form
-      onChange={handleChange}
-      onSubmit={handleSubmit}
-      className="form_container"
+    <div
+      className="w-100 h-[100vh] bg-center bg-no-repeat bg-cover overflow-hidden flex flex-col"
+      style={{
+        backgroundImage: `url('https://images.unsplash.com/photo-1595769816263-9b910be24d5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1479&q=80')`,
+      }}
     >
-        <h1>Register</h1>
+      <Navbar />
+      <div className="pt-[4vh]">
+      <form
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        className="text-white shadow-md shadow-slate-700 gap-3 rounded-md w-[30vw] p-6 flex flex-col self-center m-auto"
+      >
+        <h1 className="font-bold text-3xl pb-4">Register</h1>
 
-      <input type="email" placeholder="Email or Phone number" name="email" />
+        <input
+          type="email"
+          placeholder="Email or Phone number"
+          name="email"
+          className="bg-gray-800 h-[5h] w-[14w] align-self-center rounded-md transition-500ms p-2"
+        />
 
-      <input type="password" placeholder="Password" name="password" />
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          className="bg-gray-800 h-[5h] w-[14w] align-self-center rounded-md transition-500ms p-2"
+        />
 
-      <input type="password" placeholder="Confirm Passsword" name="password2" />
-      <h4 className="message">{message}</h4>
+        <input
+          type="password"
+          placeholder="Confirm Passsword"
+          name="password2"
+          className="bg-gray-800 h-[5h] w-[14w] align-self-center rounded-md transition-500ms p-2"
+        />
+        <h4 className="message">{message}</h4>
 
-      <button>Register</button>
-      <p>
-          Already have an account?
-        <Link className="formlink" exact='true' to='/login' >Log in</Link>
-        </p>
-    </form>
+        <button className="bg-red-500 h-[6h] w-[15w] align-self-center rounded-md transition-500ms p-2 hover:scale-110 hover:text-black">
+          Register
+        </button>
+        <div>
+          <p className="flex justify-around pr-5 pl-5">
+            Already have an account?
+            <Link
+              className="text-decoration-none text-red-500 hover:text-orange-500"
+              exact="true"
+              to="/login"
+            >
+              Log in
+            </Link>
+          </p>
+        </div>
+      </form>
+      </div>
     </div>
   );
 }
