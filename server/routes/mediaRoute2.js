@@ -3,6 +3,6 @@ const controller = require("../controllers/mediaController2");
 
 router.post("/search", controller.search);
 
-router.get("/trending", controller.trending);
+router.post("/trending", controller.trending);
 
 module.exports = router;

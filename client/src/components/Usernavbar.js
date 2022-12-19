@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Byebye from "../views/Byebye";
+import Search from "./Search";
 
-export default function Usernavbar({ logout }) {
+export default function Usernavbar({ logout, setPrincipal,principal }) {
   const [message, setMessage] = useState("");
   useEffect(() => {
     setTimeout(() => {
@@ -29,7 +30,7 @@ export default function Usernavbar({ logout }) {
   };
 
   return (
-    <div className="fixed w-[100vw]">
+    <div className="fixed z-10 w-[100vw]">
       <div
         className={colorChange ? "bg-black bg-opacity-85 " : " bg-transparent"}
       >
@@ -46,27 +47,28 @@ export default function Usernavbar({ logout }) {
             FILMIX
           </NavLink>
           <ul className="flex row justify-evenly">
-            <NavLink
-              exact="true"
-              to="/series"
-              className="px-4 hover:scale-110 py-2 mx-2 right-0 w-70 h-full text-white bg-red-500 rounded-full no-underline"
+            <button
+              onClick={()=>setPrincipal('series')}
+              className={principal=='series'? "px-4 hover:scale-110 py-2 mx-2 right-0 w-70 h-full text-black bg-red-500 rounded-full no-underline":"px-4 hover:scale-110 py-2 mx-2 right-0 w-70 h-full text-white bg-red-500 rounded-full no-underline"}
             >
               Series
-            </NavLink>
-            <NavLink
-              exact="true"
-              to="/movies"
-              className="px-4 hover:scale-110 py-2 mx-2 right-0 w-70 h-full text-white bg-red-500 rounded-full no-underline"
+            </button>
+            <button
+              onClick={()=>setPrincipal('movies')}
+              className={principal=='movies'? "px-4 hover:scale-110 py-2 mx-2 right-0 w-70 h-full text-black bg-red-500 rounded-full no-underline":"px-4 hover:scale-110 py-2 mx-2 right-0 w-70 h-full text-white bg-red-500 rounded-full no-underline"}
             >
               Movies
-            </NavLink>
+            </button>
           </ul>
-          <button
-            onClick={handleLogout}
-            className="px-4 hover:scale-110 py-2 mx-2 right-0 w-70 h-full text-white bg-red-500 rounded-full no-underline"
-          >
-            Log Out
-          </button>
+          <div className='flex align-middle'>
+            <Search />
+            <button
+              onClick={handleLogout}
+              className="px-4 hover:scale-110 py-2 mx-2 right-0 w-70 h-full text-white bg-red-500 rounded-full no-underline"
+            >
+              Log Out
+            </button>
+          </div>
         </div>
       </div>
       {message}

@@ -1,46 +1,59 @@
-import React, { useEffect, useState } from 'react';
-import Swiper from 'swiper';
-import 'swiper/swiper-bundle.css';
-import { imgURL2 } from "../config";
+import React, { useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
 
-function ResponsiveSlider({trends}) {
-  const [index, setIndex] = useState(0);
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
 
-  useEffect(() => {
-    new Swiper('.swiper-container', {
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'bullets',
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      // Make the swiper full-screen
-      height: '100vh',
-      width: '100vw',
-    });
-  }, []);
+// import required modules
+import { Navigation } from "swiper";
+import { imgURL } from "../config";
 
-  const slides = trends.map((slide, i) => {
-    let { backdrop_path, title, vote_average, name } = slide;
-    return (
-      <div key={i} className="text-center w-[100vw] h-[100vh] flex bg-white justify-center items-center">
-        <img src={`${imgURL2}${backdrop_path}`} alt={title} className="block object-cover" />
-        <h3 className="text-2xl font-bold text-center p-4">{title}</h3>
-      </div>
-    )
-  });
+export default function App({trends,media}) {
+const [length,setLength]=useState (0)
 
-  return (
-    <div className="swiper-container h-[100vh]">
-      <div className="swiper-wrapper">{slides}</div>
-      <div className="swiper-pagination"></div>
-      <div className="swiper-button-prev"></div>
-      <div className="swiper-button-next"></div>
-      <button onClick={() => setIndex((index + 1) % trends.length)}>Next</button>
+useEffect(()=>{
+  trends.map((value)=>{
+
+  })
+})
+
+const display =(movie)=>{
+  if (movie){
+  let {title,name,poster_path, media_type}=movie;
+  return(
+    <div className='h-[100vh]'>
+      <h1>{title||name}</h1>
+      <img src={imgURL+poster_path}></img>
     </div>
-  );
+  )
+  }
 }
 
-export default ResponsiveSlider;
+  return (
+    <>
+      <Swiper navigation={true} modules={[Navigation]} className="swiper">
+        <SwiperSlide>{display(trends[0])}</SwiperSlide>
+        <SwiperSlide>{display(trends[1])}</SwiperSlide>
+        <SwiperSlide>{display(trends[2])}</SwiperSlide>
+        <SwiperSlide>{display(trends[3])}</SwiperSlide>
+        <SwiperSlide>{display(trends[4])}</SwiperSlide>
+        <SwiperSlide>{display(trends[5])}</SwiperSlide>
+        <SwiperSlide>{display(trends[6])}</SwiperSlide>
+        <SwiperSlide>{display(trends[7])}</SwiperSlide>
+        <SwiperSlide>{display(trends[8])}</SwiperSlide>
+        <SwiperSlide>{display(trends[9])}</SwiperSlide>
+        <SwiperSlide>{display(trends[10])}</SwiperSlide>
+        <SwiperSlide>{display(trends[11])}</SwiperSlide>
+        <SwiperSlide>{display(trends[12])}</SwiperSlide>
+        <SwiperSlide>{display(trends[14])}</SwiperSlide>
+        <SwiperSlide>{display(trends[15])}</SwiperSlide>
+        <SwiperSlide>{display(trends[16])}</SwiperSlide>
+        <SwiperSlide>{display(trends[17])}</SwiperSlide>
+        <SwiperSlide>{display(trends[18])}</SwiperSlide>
+        <SwiperSlide>{display(trends[19])}</SwiperSlide>
+      </Swiper>
+    </>
+  );
+}
