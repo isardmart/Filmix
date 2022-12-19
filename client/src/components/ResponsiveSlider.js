@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -10,18 +10,12 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { imgURL } from "../config";
 
-export default function App({trends,media}) {
+export default function App({trends}) {
 const [length,setLength]=useState (0)
-
-useEffect(()=>{
-  trends.map((value)=>{
-
-  })
-})
 
 const display =(movie)=>{
   if (movie){
-  let {title,name,poster_path, media_type}=movie;
+  let {title,name,poster_path}=movie;
   return(
     <div className='h-[100vh]'>
       <h1>{title||name}</h1>

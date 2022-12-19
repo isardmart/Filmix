@@ -25,7 +25,7 @@ export default function PrincipalMovies() {
 
   return (
     <div>
-      {trends ? <ResponsiveSlider trends={trends} media={'movie'}/>:null}
+      {trends ? <ResponsiveSlider trends={trends}/>:null}
       <h1 className='font-bold text-4xl'> Trending </h1>
       <div className="flex pb-5 px-5 overflow-x-auto w-[100vw] pt-4">
         {trends.map((value, idx) => {
