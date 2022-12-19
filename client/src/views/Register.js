@@ -46,51 +46,53 @@ export default function Register(props) {
     >
       <Navbar />
       <div className="pt-[4vh]">
-      <form
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-        className="sm:w-[70vw] md:w-[40vw] lg:w-[30vw] text-white shadow-md shadow-slate-700 gap-3 rounded-md p-6 flex flex-col self-center m-auto"
-      >
-        <h1 className="font-bold text-3xl pb-4">Register</h1>
+        <form
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+          className="sm:w-[70vw] md:w-[40vw] lg:w-[30vw] text-white shadow-md shadow-slate-700 gap-3 rounded-md p-6 flex flex-col self-center m-auto"
+        >
+          <h1 className="font-bold text-3xl pb-4">Register</h1>
 
-        <input
-          type="email"
-          placeholder="Email or Phone number"
-          name="email"
-          className="bg-gray-800 h-[5h] w-[14w] align-self-center rounded-md transition-500ms p-2"
-        />
+          <input
+            type="email"
+            placeholder="Email or Phone number"
+            name="email"
+            className="bg-gray-800 h-[5h] w-[14w] align-self-center rounded-md transition-500ms p-2"
+          />
 
-        <input
-          type="password"
-          placeholder="Password"
-          name="password"
-          className="bg-gray-800 h-[5h] w-[14w] align-self-center rounded-md transition-500ms p-2"
-        />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            className="bg-gray-800 h-[5h] w-[14w] align-self-center rounded-md transition-500ms p-2"
+          />
 
-        <input
-          type="password"
-          placeholder="Confirm Passsword"
-          name="password2"
-          className="bg-gray-800 h-[5h] w-[14w] align-self-center rounded-md transition-500ms p-2"
-        />
-        <h4 className="message">{message}</h4>
+          <input
+            type="password"
+            placeholder="Confirm Passsword"
+            name="password2"
+            className="bg-gray-800 h-[5h] w-[14w] align-self-center rounded-md transition-500ms p-2"
+          />
+          <h4 className="message">{message}</h4>
 
-        <button className="bg-red-500 h-[6h] w-[15w] align-self-center rounded-md transition-500ms p-2 hover:scale-110 hover:text-black">
-          Register
-        </button>
-        <div>
-          <p className="flex justify-around pr-5 pl-5">
-            Already have an account?
-            <Link
-              className="text-decoration-none text-red-500 hover:text-orange-500"
-              exact="true"
-              to="/login"
-            >
-              Log in
-            </Link>
-          </p>
-        </div>
-      </form>
+          <button className="bg-red-500 h-[6h] w-[15w] align-self-center rounded-md transition-500ms p-2 hover:scale-110 hover:text-black">
+            Register
+          </button>
+          <div className="inline-flex justify-evenly">
+            <p className="pr-5 pl-5">
+              Already have an account?
+            </p>
+            <p className="hover:scale-110">
+              <Link
+                className="text-decoration-none p-2 bg-red-500 bg-opacity-40 shadow-md rounded-xl text-red-500 hover:text-orange-500 "
+                exact="true"
+                to="/login"
+              >
+                Log in
+              </Link>
+            </p>
+          </div>
+        </form>
       </div>
     </div>
   );

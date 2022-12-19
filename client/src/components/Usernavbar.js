@@ -33,7 +33,7 @@ export default function Usernavbar({ logout }) {
       <div
         className={colorChange ? "bg-black bg-opacity-85 " : " bg-transparent"}
       >
-        <div className="sticky top-0 w-[100vw] min-h-[8vh] bg-transparent flex justify-between items-center px-30 sm:p-auto transition-1000ms">
+        <div className="sticky top-0 w-[100vw] min-h-[8vh] bg-transparent flex justify-between items-center px-30 max-sm:p-auto transition-1000ms">
           <NavLink
             exact="true"
             to="/browse"
@@ -41,7 +41,7 @@ export default function Usernavbar({ logout }) {
               fontFamily:
                 "'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif",
             }}
-            className="sticky filmix font-impact text-3xl sm:text-2xl px-15 py-10 sm:p-auto mx-10 right-0 w-70 h-full text-red-500 rounded-md text-decoration-none"
+            className="filmix flex justify-around font-impact text-3xl sm:text-5xl px-15 py-10 p-auto mx-10 right-0 h-full text-red-500 rounded-md text-decoration-none"
           >
             FILMIX
           </NavLink>
