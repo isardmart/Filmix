@@ -6,16 +6,20 @@ import ResponsiveSlider from "./ResponsiveSlider.js";
 
 export default function PrincipalSeries() {
   const [trends, setTrends] = useState([]);
-  const [time_window,setTime_window]=useState('week');
+  const [time_window, setTime_window] = useState("week");
+  const [ready, setReady] = useState(false);
 
   const findTrendings = async () => {
     let url = `${URL}/media2/trending`;
-    console.log(url)
     try {
-      const body={media_type:'tv',time_window}
-      const res2 = await axios.post(url,body);
-      console.log(res2.data.media.results)
-      setTrends(res2.data.media.results);
+      const body = { media_type: "tv", time_window };
+      const res2 = await axios.post(url, body);
+      if (res2) {
+        setTimeout(() => {
+          setTrends(res2.data.media.results);
+          setReady(true);
+        }, [1000]);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -25,16 +29,25 @@ export default function PrincipalSeries() {
   }, []);
 
   return (
-    <div>
-      {trends ? <ResponsiveSlider trends={trends}/>:null}
-      <h1 className='font-bold text-4xl'> Trending </h1>
-      <div className="flex pb-5 px-5 overflow-x-auto w-[100vw] pt-4">
-        {trends.map((value, idx) => {
-          if(value.media_type=='tv'){
-          return <Card key={idx} {...value} />;
-          }
-        })}
-      </div>
-    </div>
+    <>
+      {ready ? (
+        <div>
+          <ResponsiveSlider trends={trends} />
+          <div>
+            <h1 className="font-bold text-4xl p-4"> Trending </h1>
+            <div className="flex pb-5 px-5 overflow-x-auto w-[100vw] pt-4 ">
+              {trends.map((value, idx) => {
+                return <Card key={idx} {...value} />;
+              })}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className=" h-[100vh] w-[100vw] flex justify-center">
+          <div className="mx-auto my-auto font-bold text-4xl fetching-dots">
+          </div>
+        </div>
+      )}
+    </>
   );
 }

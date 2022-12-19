@@ -1,29 +1,33 @@
 import React, { useEffect, useState } from "react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 
-// import required modules
 import { Navigation } from "swiper";
 import { imgURL } from "../config";
+import { imgURL2 } from "../config";
 
-export default function App({trends}) {
-const [length,setLength]=useState (0)
+export default function App({ trends }) {
+  const smallImageQuery = window.matchMedia("(max-width: 640px)");
 
-const display =(movie)=>{
-  if (movie){
-  let {title,name,poster_path}=movie;
-  return(
-    <div className='h-[100vh]'>
-      <h1>{title||name}</h1>
-      <img src={imgURL+poster_path}></img>
-    </div>
-  )
-  }
-}
+  const display = (movie) => {
+    if (movie) {
+      let { title, name, poster_path, overview,backdrop_path } = movie;
+      return (
+        <div className="h-[85vh]">
+          {smallImageQuery.matches ?
+          <img className="" src={imgURL + poster_path}></img> :
+          <img className="object-contain" src={imgURL + poster_path}></img>
+          }
+          <div className="bg-slate-500 absolute top-200 flex">
+            <h1 className="text-red-600 font-bold">{title || name}</h1>
+            <p className="white">{overview}</p>
+          </div>
+        </div>
+      );
+    }
+  };
 
   return (
     <>
