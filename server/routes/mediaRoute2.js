@@ -5,7 +5,4 @@ router.post("/search", controller.search);
 
 router.post("/trending", controller.trending);
 
-router.post("/posters", controller.posters);
-
-
 module.exports = router;
