@@ -3,6 +3,7 @@ import axios from "axios";
 import { URL } from "../config";
 import Usernavbar from "../components/Usernavbar";
 import DisplayMovie from "./DisplayMovie";
+import Footer from "../components/Footer";
 
 const Movies = ({ logout }) => {
   const [error, setError] = useState("");
@@ -55,11 +56,12 @@ const Movies = ({ logout }) => {
   }, [imdbid]);
 
   return (
-    <div>
+    <div className='bg-black ' >
       <Usernavbar logout={logout} />
-      <form onSubmit={handleSubmit}>
-        <input onChange={handleChange} value={search.title} />
-        <button>Submit</button>
+      <div className='absolute '>
+      <form className='flex justify-center' onSubmit={handleSubmit}>
+        <input className='border-red ' onChange={handleChange} value={search.title} />
+        <button className='px-4 hover:scale-110 p-1 mx-10 sm:mx-2 right-0 w-70 h-full text-black bg-red-500 bg-opacity-60 rounded-lg no-underline'>Submit</button>
       </form>
       {isReady ? (
         !error ? (
@@ -75,6 +77,8 @@ const Movies = ({ logout }) => {
           alt="loading"
         />
       ) : null}
+      </div>
+      <Footer logout={logout}/>
     </div>
   );
 };

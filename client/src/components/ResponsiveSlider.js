@@ -18,9 +18,9 @@ export default function App({ trends }) {
         <div className="h-[85vh]">
           {smallImageQuery.matches ?
           <img className="" src={imgURL + poster_path}></img> :
-          <img className="object-contain" src={imgURL + poster_path}></img>
+          <img className=" w-[100vw]" src={imgURL2 + backdrop_path}></img>
           }
-          <div className="bg-slate-500 absolute top-200 flex">
+          <div className="bg-slate-500 absolute top-200 z-10 flex">
             <h1 className="text-red-600 font-bold">{title || name}</h1>
             <p className="white">{overview}</p>
           </div>

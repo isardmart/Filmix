@@ -20,5 +20,15 @@ const trending=async(req,res)=>{
     return res.json(error)
   }
 }
+const posters= async(req,res)=>{
+  const {media_type,id}=req.body;
+  let url=`https://api.themoviedb.org/3/${media_type}/${id}/images?api_key=${process.env.apikey2}&language=en.us`;
+  try {
+    const fetch =await axios.get(url);
+    return res.json({ ok:true, media:fetch.data});
+  } catch (error) {
+    return res.json(error)
+  }
+}
   
-module.exports = { search,trending};
+module.exports = { search,trending, posters};

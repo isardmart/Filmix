@@ -14,9 +14,9 @@ import axios from "axios";
 import Series from "./views/Series";
 import Movies from "./views/Movies";
 import Settings from "./views/Settings";
+import ErrorPage from "./views/ErrorPage";
 
 export default function App() {
-  
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const token = JSON.parse(localStorage.getItem("token"));
@@ -48,10 +48,13 @@ export default function App() {
     <div className="App">
       <Router>
         <Routes>
+          <Route exact="true" path="/dev" element={<Movies />} />
           <Route
             exact="true"
             path="/"
-            element={isLoggedIn ? <Navigate to="/browse" /> : <Login login={login} />}
+            element={
+              isLoggedIn ? <Navigate to="/browse" /> : <Login login={login} />
+            }
           />
           <Route
             exact="true"
@@ -75,35 +78,52 @@ export default function App() {
             exact="true"
             path="/browse"
             element={
-              isLoggedIn ? (
-                <Secret logout={logout}  />
-              ) : (
-                <Navigate to="/" />
-              )
+              isLoggedIn ? <Secret logout={logout} /> : <Navigate to="/" />
             }
           />
           <Route
             exact="true"
             path="/series"
-            element={isLoggedIn ? <Series logout={logout} /> : <Navigate to="/login" />}
+            element={
+              isLoggedIn ? (
+                <Secret route={"series"} logout={logout} />
+              ) : (
+                <ErrorPage />
+              )
+            }
           />
           <Route
             exact="true"
             path="/movies"
-            element={isLoggedIn ? <Movies logout={logout} /> : <Navigate to="/login" />}
+            element={
+              isLoggedIn ? (
+                <Secret route={"movies"} logout={logout} />
+              ) : (
+                <ErrorPage />
+              )
+            }
           />
           <Route
             exact="true"
             path="/settings"
-            element={isLoggedIn ? <Settings logout={logout} /> : <Navigate to="/login" />}
+            element={
+              isLoggedIn ? (
+                <Settings logout={logout} />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
           />
           <Route
             exact="true"
             path="/*"
-            element={isLoggedIn ? <Navigate to="/browse" /> : <Login login={login} />}
+            element={
+              isLoggedIn ? <Navigate to="/browse" /> : <Login login={login} />
+            }
           />
         </Routes>
       </Router>
     </div>
   );
 }
+/**/

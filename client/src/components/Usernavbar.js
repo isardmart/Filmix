@@ -3,8 +3,7 @@ import { NavLink } from "react-router-dom";
 import Byebye from "../views/Byebye";
 import Search from "./Search";
 
-export default function Usernavbar({ setPrincipal,principal }) {
-
+export default function Usernavbar({ setPrincipal, principal }) {
   const [colorChange, setColorchange] = useState(false);
   window.onscroll = () => {
     if (window.scrollY >= 12) {
@@ -22,7 +21,7 @@ export default function Usernavbar({ setPrincipal,principal }) {
         <div className="sticky top-0 w-[100vw] min-h-[8vh] bg-transparent flex flex-col sm:flex-row sm:justify-around items-center sm:px-30 transition-1000ms">
           <NavLink
             exact="true"
-            to="/browse"
+            to="/"
             style={{
               fontFamily:
                 "'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif",
@@ -32,22 +31,32 @@ export default function Usernavbar({ setPrincipal,principal }) {
             FILMIX
           </NavLink>
           <ul className="absolute sm:relative flex-row justify-around sm:justify-evenly">
-            <button
-              onClick={()=>setPrincipal('tv')}
-              className={principal=='tv'? "px-4 hover:scale-110 py-1 mx-10 sm:mx-2 right-0 w-70 h-full text-black bg-red-500 bg-opacity-60 rounded-full no-underline":"px-4 hover:scale-110 hover:bg-opacity-55 py-1 mx-10 sm:mx-2 right-0 w-70 h-full text-white bg-red-500 bg-opacity-25 rounded-full no-underline"}
+            <NavLink
+              exact='true'
+              to='/series'
+              onClick={() => setPrincipal("tv")}
+              className={
+                principal == "tv"
+                  ? "px-4 hover:scale-110 py-1 mx-10 sm:mx-2 right-0 w-70 h-full text-white bg-red-500 bg-opacity-60 rounded-full no-underline"
+                  : "px-4 hover:scale-110 hover:bg-opacity-55 py-1 mx-10 sm:mx-2 right-0 w-70 h-full text-black bg-red-500 bg-opacity-25 rounded-full no-underline"
+              }
             >
               Series
-            </button>
-            <button
-              onClick={()=>setPrincipal('movies')}
-              className={principal=='movies'? "px-4 hover:scale-110 py-1 mx-10 sm:mx-2 right-0 w-70 h-full text-black bg-red-500 bg-opacity-60 rounded-full no-underline":"px-4 hover:scale-110 hover:bg-opacity-55 py-2 mx-2 right-0 w-70 h-full text-white bg-red-500 bg-opacity-25 rounded-full no-underline"}
+            </NavLink>
+            <NavLink
+            exact='true'
+            to='/movies'
+              onClick={() => setPrincipal("movies")}
+              className={
+                principal == "movies"
+                  ? "px-4 hover:scale-110 py-1 mx-10 sm:mx-2 right-0 w-70 h-full text-white bg-red-500 bg-opacity-60 rounded-full no-underline"
+                  : "px-4 hover:scale-110 hover:bg-opacity-55 py-1 mx-2 right-0 w-70 h-full text-black bg-red-500 bg-opacity-25 rounded-full no-underline"
+              }
             >
               Movies
-            </button>
+            </NavLink>
           </ul>
-          <div className='flex align-middle'>
-            <Search />
-          </div>
+          <Search className="flex align-middle" />
         </div>
       </div>
     </div>

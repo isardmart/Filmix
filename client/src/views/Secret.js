@@ -7,12 +7,12 @@ import axios from "axios";
 import { URL } from "../config";
 import FetchingData from "../components/FetchingData";
 
-export default function Secret({ logout }) {
-  const [principal, setPrincipal] = useState("movies");
+export default function Secret({ logout, route }) {
+  const [principal, setPrincipal] = useState("tv");
   const [time_window, setTime_window] = useState("week");
-  const [movieFetched,setMovieFetched] =useState(false);
-  const [serieFetched,setSerieFetched] =useState(false);
-
+  const [movieFetched, setMovieFetched] = useState(false);
+  const [serieFetched, setSerieFetched] = useState(false);
+  const [waitRoute, setWaitRoute] = useState(false);
 
   const findMovies = async () => {
     let url = `${URL}/media2/trending`;
@@ -27,6 +27,7 @@ export default function Secret({ logout }) {
       console.error(error);
     }
   };
+
   const findSeries = async () => {
     let url = `${URL}/media2/trending`;
     try {
@@ -40,10 +41,27 @@ export default function Secret({ logout }) {
       console.error(error);
     }
   };
+
   useEffect(() => {
-    findMovies();
-    findSeries();
+    if (JSON.parse(localStorage.getItem("movie"))) {
+      setMovieFetched(true);
+    } else {
+      findMovies();
+    }
+    if (JSON.parse(localStorage.getItem("tv"))) {
+      setSerieFetched(true);
+    } else {
+      findSeries();
+    }
   }, []);
+
+  useEffect(() => {
+    if (route) {
+      setPrincipal(route);
+    }
+    setWaitRoute(true);
+  }, []);
+
   useEffect(() => {
     findMovies();
     findSeries();
@@ -57,13 +75,19 @@ export default function Secret({ logout }) {
         principal={principal}
         setTime_window={setTime_window}
       />
-      {principal == "movies" ? (
-        movieFetched?
-        <PrincipalMovies />:<FetchingData />
-      ) : (
-        serieFetched?
-        <PrincipalSeries />:<FetchingData />
-      )}
+      {waitRoute ? (
+        principal === "movies" ? (
+          movieFetched ? (
+            <PrincipalMovies />
+          ) : (
+            <FetchingData />
+          )
+        ) : serieFetched ? (
+          <PrincipalSeries />
+        ) : (
+          <FetchingData />
+        )
+      ) : null}
       <Footer logout={logout} />
     </div>
   );
