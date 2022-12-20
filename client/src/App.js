@@ -11,8 +11,6 @@ import Register from "./views/Register";
 import Secret from "./views/Secret";
 import { URL } from "./config";
 import axios from "axios";
-import Series from "./views/Series";
-import Movies from "./views/Movies";
 import Settings from "./views/Settings";
 import ErrorPage from "./views/ErrorPage";
 import Search from "./views/Search";
@@ -51,13 +49,8 @@ export default function App() {
         <Routes>
           <Route
             exact="true"
-            path="/searchmovie"
-            element={<Search media_type={"movie"} /> /*Falta is loggedin */}
-          />
-          <Route
-            exact="true"
-            path="/searchseries"
-            element={<Search media_type={"series"} /> /*Falta is loggedin */}
+            path="/search"
+            element={<Search /> /*Falta is loggedin */}
           />
           <Route
             exact="true"

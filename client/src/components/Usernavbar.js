@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Byebye from "../views/Byebye";
 import SearchButton from "./SearchButton";
+import Search from "../views/Search";
 
 export default function Usernavbar({ setPrincipal, principal }) {
   const [colorChange, setColorchange] = useState(false);
+  const [clicked, setClicked] = useState(false);
+
   window.onscroll = () => {
     if (window.scrollY >= 12) {
       setColorchange(true);
@@ -60,7 +63,11 @@ export default function Usernavbar({ setPrincipal, principal }) {
               Movies
             </NavLink>
           </ul>
-          <SearchButton media_type={principal} className="absolute" />
+          {clicked ? (
+            <Search />
+          ) : (
+            <SearchButton setClicked={setClicked} className="absolute" />
+          )}
         </div>
       </div>
     </div>

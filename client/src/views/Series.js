@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { URL } from "../config";
 import Usernavbar from "../components/Usernavbar";
-import DisplaySeries from "./DisplaySeries";
+import Display from "./Display";
 
 const Series = ({ logout }) => {
   const [error, setError] = useState("");
@@ -64,7 +64,7 @@ const Series = ({ logout }) => {
       {isReady ? (
         !error ? (
           <div>
-            <DisplaySeries media={media} media2={media2} />
+            <Display media={media} media2={media2} />
           </div>
         ) : (
           <h1>{error}</h1>

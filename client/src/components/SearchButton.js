@@ -1,14 +1,14 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { NavLink } from 'react-router-dom'
 
-export default function SearchButton({media_type}) {
+export default function SearchButton({setClicked}) {
   return (
     
-    <NavLink
-    exact="true"
-    to= {media_type=='movie'? "/searchmovie":"/searchseries"}
-    className='absolute top-16 sm:top-0 sm:relative sm:px-15'>
-    <svg
+    <button
+    className='absolute top-16 sm:top-0 sm:relative sm:px-15'
+    onClick={()=>setClicked(true)}
+    >
+      <svg
       xmlns="http://www.w3.org/2000/svg"
       className="icon icon-tabler icon-tabler-search"
       width="48"
@@ -24,7 +24,7 @@ export default function SearchButton({media_type}) {
       <circle cx="10" cy="10" r="7" />
       <line x1="21" y1="21" x2="15" y2="15" />
     </svg>
-  </NavLink>
+  </button>
   )
 }
 

@@ -8,15 +8,14 @@ export default function Display({media,media2}) {
         Production, Rated, Ratings,Released,Response, Runtime, Title, Type, Website,
         Writer, Year,imdbID,imdbRating,imdbVotes
     }= media;
-    let {adult,backdrop_path,overview,poster_path}=media2
   return (
     <div className='display'>
         <h1>{Title}</h1>
-        <img src={`${imgURL}${poster_path}`} alt='poster'/>
+        <img src={media2?(`${imgURL}${media2.poster_path}`):null} alt='poster'/>
         <h1>{Actors}</h1>
         <h1>{Awards}</h1>
         <h1>{imdbID}</h1>
     </div>
   )
 }
-//{poster_path ? (<img .... />) : null}
+//{poster_path ? (<img .... />) : null} backdrop_path,overview,

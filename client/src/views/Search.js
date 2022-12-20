@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { URL } from "../config"; 
 import Display from "./Display";
-import Footer from "../components/Footer";
-import Usernavbar from "../components/Usernavbar";
 
-const Search = ({ logout , media_type }) => {
+const Search = () => {
   const [error, setError] = useState("");
   const [isReady, setIsReady] = useState(false);
+  const [isReady2, setIsReady2] = useState(false);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState({ title: "" });
   const [media, setMedia] = useState({});
@@ -32,10 +31,12 @@ const Search = ({ logout , media_type }) => {
           setError(`Seems that your search doesn't exist`);
           return setIsReady(true);
         }
+        setPrincipal('tv');
         setMedia(res.data.media);
         setImdbid(imdbID);
         return setIsReady(true);
       }
+      setPrincipal('movie')
       setMedia(res.data.media);
       setImdbid(imdbID);
       setError(Error);
@@ -50,10 +51,15 @@ const Search = ({ logout , media_type }) => {
     let url2 = `${URL}/media2/search`;
     try {
       const res2 = await axios.post(url2, { imdbid });
+      console.log(principal)
       if (principal=='movie'){
-      setMedia2(res2.data.media.movie_results[0]);
+        console.log(res2.data.media.movie_results[0])
+        setMedia2(res2.data.media.movie_results[0]);
+        return setIsReady2(true)
       }else{
+        console.log(res2.data.media.tv_results[0])
         setMedia2(res2.data.media.tv_results[0]);
+        return setIsReady2(true)
       }
     } catch (error) {}
   };
@@ -61,20 +67,15 @@ const Search = ({ logout , media_type }) => {
     findPoster(imdbid);
   }, [imdbid]);
 
-  useEffect(()=>{
-    setPrincipal(media_type);
-  },[])
-
   return (
-    <div className='bg-black text-white flex flex-col z-20' >
-      <Usernavbar setPrincipal={setPrincipal} principal={principal}/>
-      <form className='absolute top-[40vh] left-[40vw] justify-center' onSubmit={handleSubmit}>
-        <h1> Search </h1>
+    <div className='bg-black text-white flex flex-col z-20 ' >
+      <form className='absolute sm:left-[80vw] sm:top-[3vh] top-[70vh] left-[20vw]  ' onSubmit={handleSubmit}>
+        <h1 className='font-bold pl-2 bg-black bg-opacity-80 rounded-xl w-fit'> Search </h1>
         <input className='border-red-500 bg-black text-white border-2 rounded-xl px-2 ' onChange={handleChange} value={search.title} />
         <button className='px-4 hover:scale-110 p-1 mx-10 sm:mx-2 right-0 w-70 h-full text-black bg-red-500 bg-opacity-60 rounded-xl no-underline'>Submit</button>
       </form>
       <div>
-      {isReady ? (
+      {isReady ?( isReady2 ?(
         !error ?  (
           <div>
             <Display media={media} media2={media2} />
@@ -87,9 +88,8 @@ const Search = ({ logout , media_type }) => {
           src="https://www.organizedthemes.com/wp-content/plugins/remind-me/js/loading.gif"
           alt="loading"
         />
-      ) : <div className='h-[90vh]'></div>}
+      ) : <div></div>):null}
       </div>
-      <Footer className='flex mt-[100vh] bottom-0' logout={logout}/>
     </div>
   );
 };
