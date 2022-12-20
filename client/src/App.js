@@ -86,9 +86,9 @@ export default function App() {
             path="/series"
             element={
               isLoggedIn ? (
-                <Secret route={"series"} logout={logout} />
+                <Secret route={"tv"} logout={logout} />
               ) : (
-                <ErrorPage />
+                <Navigate to="/" />
               )
             }
           />
@@ -98,8 +98,8 @@ export default function App() {
             element={
               isLoggedIn ? (
                 <Secret route={"movies"} logout={logout} />
-              ) : (
-                <ErrorPage />
+              ) :  (
+                <Navigate to="/" />
               )
             }
           />

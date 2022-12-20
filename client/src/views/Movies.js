@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { URL } from "../config";
-import Usernavbar from "../components/Usernavbar";
+import { URL } from "../config"; 
 import DisplayMovie from "./DisplayMovie";
 import Footer from "../components/Footer";
+import Usernavbar from "../components/Usernavbar";
 
-const Movies = ({ logout }) => {
+const Movies = ({ logout , media_type }) => {
   const [error, setError] = useState("");
   const [isReady, setIsReady] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -13,6 +13,7 @@ const Movies = ({ logout }) => {
   const [media, setMedia] = useState({});
   const [media2, setMedia2] = useState({});
   const [imdbid, setImdbid] = useState("");
+  const [principal,setPrincipal]=useState('movies')
 
   const handleChange = (e) => setSearch({ ...search, title: e.target.value });
 
@@ -54,14 +55,18 @@ const Movies = ({ logout }) => {
   useEffect(() => {
     findPoster(imdbid);
   }, [imdbid]);
+  useEffect(()=>{
+    setPrincipal(media_type);
+  },[])
 
   return (
-    <div className='bg-black flex flex-col' >
-      <Usernavbar logout={logout} />
-      <form className='flex justify-center top-[100px]' onSubmit={handleSubmit}>
-        <input className='border-red ' onChange={handleChange} value={search.title} />
+    <div className='bg-black text-white flex flex-col z-20' >
+      <Usernavbar setPrincipal={setPrincipal} principal={principal}/>
+      <form className='absolute top-[20vh] left-[40vw] justify-center' onSubmit={handleSubmit}>
+        <input className='border-red-500 bg-black text-white border-2 rounded-xl ' onChange={handleChange} value={search.title} />
         <button className='px-4 hover:scale-110 p-1 mx-10 sm:mx-2 right-0 w-70 h-full text-black bg-red-500 bg-opacity-60 rounded-lg no-underline'>Submit</button>
       </form>
+      <div className=' py-40'>
       {isReady ? (
         !error ? (
           <div>
@@ -76,6 +81,7 @@ const Movies = ({ logout }) => {
           alt="loading"
         />
       ) : null}
+      </div>
       <Footer className='flex mt-[100vh] bottom-0' logout={logout}/>
     </div>
   );

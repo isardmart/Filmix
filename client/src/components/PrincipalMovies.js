@@ -5,23 +5,6 @@ import axios from "axios";
 
 export default function PrincipalMovies() {
 
-  const findTop_rated =async()=>{
-    let url = `${URL}/media2/fetch`;
-    try {
-      const body= {media_type :"movie" , action:"top_rated"};
-      const res = await axios.post(url, body);
-      if (res) {
-        localStorage.setItem("top_movies", JSON.stringify(res.data.media.results));
-      }
-    } catch (error) {
-      console.error(error);
-    }
-
-  };
-  useEffect(()=>{
-    findTop_rated();
-  },[])
-
   return (
     <div className='text-white' >
       <ResponsiveSlider className='z-1' trends={JSON.parse(localStorage.getItem("movie"))} />

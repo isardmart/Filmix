@@ -16,9 +16,9 @@ export default function PrincipalSeries() {
         </div>
       </div>
       <div className='sticky z-10 ' >
-        <h1 className="font-bold text-4xl p-4 text-red-500"> Adventure </h1>
+        <h1 className="font-bold text-4xl p-4 text-red-500"> Top Rated </h1>
         <div className="flex pb-5 px-5 overflow-x-auto w-[100vw] pt-4 ">
-          {JSON.parse(localStorage.getItem("tv")).map((value, idx) => {
+          {JSON.parse(localStorage.getItem("top_tv")).map((value, idx) => {
             return <Card key={idx} {...value} />;
           })}
         </div>

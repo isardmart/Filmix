@@ -12,7 +12,8 @@ export default function Secret({ logout, route }) {
   const [time_window, setTime_window] = useState("week");
   const [movieFetched, setMovieFetched] = useState(false);
   const [serieFetched, setSerieFetched] = useState(false);
-  const [waitRoute, setWaitRoute] = useState(false);
+  const [topMovieFetched, setTopMovieFetched] = useState(false);
+  const [topSerieFetched, setTopSerieFetched] = useState(false);
 
   const findMovies = async () => {
     let url = `${URL}/media2/trending`;
@@ -42,16 +43,53 @@ export default function Secret({ logout, route }) {
     }
   };
 
+  const findTopMovies = async () => {
+    let url = `${URL}/media2/fetch`;
+    try {
+      const body = { media_type: "movie", action: "top_rated" };
+      const res = await axios.post(url, body);
+      if (res) {
+        localStorage.setItem("top_movies",JSON.stringify(res.data.media.results));
+        setTopMovieFetched(true);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const findTopSeries = async () => {
+    let url2 = `${URL}/media2/fetch`;
+    try {
+      const body = { media_type: "tv", action: "top_rated" };
+      const res2 = await axios.post(url2, body);
+      if (res2) {
+        localStorage.setItem("top_tv", JSON.stringify(res2.data.media.results));
+        setTopSerieFetched(true);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("movie"))) {
+    if (
+      JSON.parse(localStorage.getItem("movie")) &&
+      JSON.parse(localStorage.getItem("top_movies"))
+    ) {
       setMovieFetched(true);
+      setTopMovieFetched(true);
     } else {
       findMovies();
+      findTopMovies();
     }
-    if (JSON.parse(localStorage.getItem("tv"))) {
+    if (
+      JSON.parse(localStorage.getItem("tv")) &&
+      JSON.parse(localStorage.getItem("top_tv"))
+    ) {
       setSerieFetched(true);
+      setTopSerieFetched(true);
     } else {
       findSeries();
+      findTopSeries();
     }
   }, []);
 
@@ -59,7 +97,6 @@ export default function Secret({ logout, route }) {
     if (route) {
       setPrincipal(route);
     }
-    setWaitRoute(true);
   }, []);
 
   useEffect(() => {
@@ -75,14 +112,16 @@ export default function Secret({ logout, route }) {
         principal={principal}
         setTime_window={setTime_window}
       />
-      {waitRoute ? (
-        principal === "movies" ? (
-          movieFetched ? (
+      {principal == "movies" ? (
+        movieFetched ? (
+          topMovieFetched ? (
             <PrincipalMovies />
           ) : (
             <FetchingData />
           )
-        ) : serieFetched ? (
+        ) : null
+      ) : serieFetched ? (
+        topSerieFetched ? (
           <PrincipalSeries />
         ) : (
           <FetchingData />
