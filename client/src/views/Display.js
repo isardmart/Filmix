@@ -1,9 +1,10 @@
 import React from 'react';
 import { imgURL } from "../config";
 
-export default function DisplaySeries({media,media2}) {
+
+export default function Display({media,media2}) {
     let {
-        Actors,Awards,BoxOffice,Country,DVD,Director,Genre,Language,Metascore,Plot,Poster,
+        Actors,Awards,Country,Director,Genre,Language,Metascore,Plot,Poster,
         Production, Rated, Ratings,Released,Response, Runtime, Title, Type, Website,
         Writer, Year,imdbID,imdbRating,imdbVotes
     }= media;
@@ -18,3 +19,4 @@ export default function DisplaySeries({media,media2}) {
     </div>
   )
 }
+//{poster_path ? (<img .... />) : null}

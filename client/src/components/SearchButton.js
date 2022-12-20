@@ -1,11 +1,12 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-export default function Search() {
+export default function SearchButton({media_type}) {
   return (
+    
     <NavLink
     exact="true"
-    to="/dev"
+    to= {media_type=='movie'? "/searchmovie":"/searchseries"}
     className='absolute top-16 sm:top-0 sm:relative sm:px-15'>
     <svg
       xmlns="http://www.w3.org/2000/svg"

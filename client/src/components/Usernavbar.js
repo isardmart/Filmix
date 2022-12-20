@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Byebye from "../views/Byebye";
-import Search from "./Search";
+import SearchButton from "./SearchButton";
 
 export default function Usernavbar({ setPrincipal, principal }) {
   const [colorChange, setColorchange] = useState(false);
@@ -16,7 +16,11 @@ export default function Usernavbar({ setPrincipal, principal }) {
   return (
     <div className="fixed z-20 w-[100vw]">
       <div
-        className={colorChange ? "bg-black bg-opacity-85 transition duration-700 ease-in-out" : " bg-transparent transition duration-700 ease-in-out"}
+        className={
+          colorChange
+            ? "bg-black bg-opacity-85 transition duration-700 ease-in-out"
+            : " bg-transparent transition duration-700 ease-in-out"
+        }
       >
         <div className="sticky top-0 w-[100vw] min-h-[8vh] bg-transparent flex flex-col sm:flex-row sm:justify-around sm:items-center items-center sm:px-30 ">
           <NavLink
@@ -32,8 +36,8 @@ export default function Usernavbar({ setPrincipal, principal }) {
           </NavLink>
           <ul className="relative pb-10 sm:pb-0 flex-row justify-around sm:justify-evenly">
             <NavLink
-              exact='true'
-              to='/series'
+              exact="true"
+              to="/series"
               onClick={() => setPrincipal("tv")}
               className={
                 principal == "tv"
@@ -44,8 +48,8 @@ export default function Usernavbar({ setPrincipal, principal }) {
               Series
             </NavLink>
             <NavLink
-              exact='true'
-              to='/movies'
+              exact="true"
+              to="/movies"
               onClick={() => setPrincipal("movies")}
               className={
                 principal == "movies"
@@ -56,7 +60,7 @@ export default function Usernavbar({ setPrincipal, principal }) {
               Movies
             </NavLink>
           </ul>
-          <Search className="absolute" />
+          <SearchButton media_type={principal} className="absolute" />
         </div>
       </div>
     </div>
