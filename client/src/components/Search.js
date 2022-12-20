@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Search() {
   return (
-    <div><button>
+    <div className='sm:px-15'><button>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className="icon icon-tabler icon-tabler-search"
