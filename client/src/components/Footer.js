@@ -1,4 +1,5 @@
 import React,{useEffect,useState} from "react";
+import { NavLink } from "react-router-dom";
 import Byebye from "../views/Byebye";
 
 export default function Footer({ logout }) {
@@ -10,6 +11,7 @@ export default function Footer({ logout }) {
   }, [message]);
   const handleLogout = (e) => {
     e.preventDefault();
+    console.log('logout handled')
     document.body.style.overflow = "hidden";
     setMessage(<Byebye />);
     setTimeout(() => {
@@ -19,12 +21,14 @@ export default function Footer({ logout }) {
   };
   return (
     <div className="h-[10vh] bg-black">
-      <button
-        onClick={handleLogout}
-        className="flex justify-center mx-auto my-7 hover:scale-110 p-1.5 text-white bg-red-500 rounded-full no-underline"
+      <NavLink
+      exact='true'
+      to='/'
+      onClick={handleLogout}
+      className="flex justify-center w-[100px] mx-auto my-7 hover:scale-110 p-1.5 text-white bg-red-500 rounded-full no-underline"
       >
         Log Out
-      </button>
+      </NavLink>
     </div>
   );
 }

@@ -56,10 +56,9 @@ const Movies = ({ logout }) => {
   }, [imdbid]);
 
   return (
-    <div className='bg-black ' >
+    <div className='bg-black flex flex-col' >
       <Usernavbar logout={logout} />
-      <div className='absolute '>
-      <form className='flex justify-center' onSubmit={handleSubmit}>
+      <form className='flex justify-center top-[100px]' onSubmit={handleSubmit}>
         <input className='border-red ' onChange={handleChange} value={search.title} />
         <button className='px-4 hover:scale-110 p-1 mx-10 sm:mx-2 right-0 w-70 h-full text-black bg-red-500 bg-opacity-60 rounded-lg no-underline'>Submit</button>
       </form>
@@ -77,8 +76,7 @@ const Movies = ({ logout }) => {
           alt="loading"
         />
       ) : null}
-      </div>
-      <Footer logout={logout}/>
+      <Footer className='flex mt-[100vh] bottom-0' logout={logout}/>
     </div>
   );
 };

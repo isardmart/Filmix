@@ -15,12 +15,12 @@ export default function App({ trends }) {
     if (movie) {
       let { title, name, poster_path, overview,backdrop_path } = movie;
       return (
-        <div className="h-[85vh]">
+        <div >
           {smallImageQuery.matches ?
-          <img className="" src={imgURL + poster_path}></img> :
-          <img className=" w-[100vw]" src={imgURL2 + backdrop_path}></img>
+          <img src={imgURL + poster_path}></img> :
+          <img src={imgURL2 + backdrop_path}></img>
           }
-          <div className="bg-slate-500 absolute top-200 z-10 flex">
+          <div className="bg-slate-500 absolute top-200 flex">
             <h1 className="text-red-600 font-bold">{title || name}</h1>
             <p className="white">{overview}</p>
           </div>
@@ -28,9 +28,8 @@ export default function App({ trends }) {
       );
     }
   };
-
   return (
-    <>
+    <div >
       <Swiper navigation={true} modules={[Navigation]} className="swiper">
         <SwiperSlide>{display(trends[0])}</SwiperSlide>
         <SwiperSlide>{display(trends[1])}</SwiperSlide>
@@ -52,6 +51,6 @@ export default function App({ trends }) {
         <SwiperSlide>{display(trends[18])}</SwiperSlide>
         <SwiperSlide>{display(trends[19])}</SwiperSlide>
       </Swiper>
-    </>
+    </div>
   );
 }

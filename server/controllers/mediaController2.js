@@ -20,6 +20,16 @@ const trending=async(req,res)=>{
     return res.json(error)
   }
 }
+const fetch =async(req,res)=>{
+  const {media_type,action}=req.body;
+  let url=`https://api.themoviedb.org/3/${media_type}/${action}?api_key=${process.env.apikey2}&language=en-US&page=1`;
+  try {
+    const fetch =await axios.get(url);
+    return res.json({ ok:true, media:fetch.data});
+  } catch (error) {
+    return res.json(error)
+  }
+}
 
   
-module.exports = { search,trending};
+module.exports = { search,trending,fetch};
