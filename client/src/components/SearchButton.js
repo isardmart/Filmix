@@ -5,7 +5,7 @@ export default function SearchButton({setClicked}) {
   return (
     
     <button
-    className='absolute top-16 sm:top-0 sm:relative sm:px-15'
+    className='absolute top-[70vh] sm:right-auto right-[43vw] sm:top-0 sm:relative sm:px-15'
     onClick={()=>setClicked(true)}
     >
       <svg

@@ -14,6 +14,8 @@ export default function Secret({ logout, route }) {
   const [serieFetched, setSerieFetched] = useState(false);
   const [topMovieFetched,setTopMovieFetched]=useState(false);
   const [topSerieFetched,setTopSerieFetched]=useState(false);
+  const [upcomingMovieFetched,setUpcomingMovieFetched]=useState(false);
+  const [upcomingSerieFetched,setUpcomingSerieFetched]=useState(false);
 
   const [waitRoute, setWaitRoute] = useState(false);
 
@@ -71,23 +73,54 @@ export default function Secret({ logout, route }) {
       console.error(error);
     }
   }
+  const findUpcomingMovies =async()=>{
+    let url = `${URL}/media2/fetch`;
+    try {
+      const body= {media_type :"movie" , action:"upcoming"};
+      const res5 = await axios.post(url, body);
+      if (res5) {
+        console.log(res5.data.media)
+        localStorage.setItem("upcoming_movies", JSON.stringify(res5.data.media.results));
+        setUpcomingMovieFetched(true);
+      }
+    } catch (error) {
+      console.error(error);
+    };
+  };
+  const findUpcomingSeries =async()=>{
+    let url2 = `${URL}/media2/fetch`;
+    try {
+      const body= {media_type :"tv" , action:"airing_today"};
+      const res6 = await axios.post(url2, body);
+      if (res6) {
+        localStorage.setItem("upcoming_tv", JSON.stringify(res6.data.media.results));
+        setUpcomingSerieFetched(true);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("movie")) && JSON.parse(localStorage.getItem("top_movies"))) {
+    if (JSON.parse(localStorage.getItem("movie")) &&  JSON.parse(localStorage.getItem("top_movies"))&&JSON.parse(localStorage.getItem("upcoming_movies"))) {
       setMovieFetched(true);
       setTopMovieFetched(true);
+      setUpcomingMovieFetched(true);
     } else {
       findMovies();
       findTopMovies();
+      findUpcomingMovies();
     }
-    if (JSON.parse(localStorage.getItem("tv")) && JSON.parse(localStorage.getItem("top_tv"))) {
+    if (JSON.parse(localStorage.getItem("tv")) && JSON.parse(localStorage.getItem("top_tv"))&& JSON.parse(localStorage.getItem("upcoming_tv"))) {
       setSerieFetched(true);
       setTopSerieFetched(true);
+      setUpcomingSerieFetched(true);
     } else {
       findSeries();
       findTopSeries();
+      findUpcomingSeries();
     }
-
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -95,12 +128,8 @@ export default function Secret({ logout, route }) {
       setPrincipal(route);
     }
     setWaitRoute(true);
+    // eslint-disable-next-line
   }, []);
-
-  useEffect(() => {
-    findMovies();
-    findSeries();
-  }, [time_window]);
 
   return (
     <div className="bg-black text-red-600 flex flex-col">
@@ -111,13 +140,13 @@ export default function Secret({ logout, route }) {
         setTime_window={setTime_window}
       />
       {waitRoute ? (
-        principal == "movies" ? (
-          movieFetched ? (topMovieFetched ? (
+        principal === "movies" ? (
+          movieFetched ? (topMovieFetched && upcomingMovieFetched ? (
             <PrincipalMovies />
           ) : (
             <FetchingData />
           )
-        ) : null ): serieFetched ? (topSerieFetched? (
+        ) : null ): serieFetched ? (topSerieFetched && upcomingSerieFetched ? (
           <PrincipalSeries />
         ) : (
           <FetchingData />

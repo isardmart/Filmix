@@ -47,11 +47,7 @@ export default function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route
-            exact="true"
-            path="/search"
-            element={<Search /> /*Falta is loggedin */}
-          />
+          
           <Route
             exact="true"
             path="/"

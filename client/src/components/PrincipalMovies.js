@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Card from "./Card";
 import ResponsiveSlider from "./ResponsiveSlider.js";
-import axios from "axios";
 
 export default function PrincipalMovies() {
 
@@ -24,6 +23,18 @@ export default function PrincipalMovies() {
           })}
         </div>
       </div>
+      <div className='sticky z-10 ' >
+        <h1 className="font-bold text-4xl p-4 text-red-500"> Upcoming </h1>
+        <div className="flex pb-5 px-5 overflow-x-auto w-[100vw] pt-4 ">
+          {JSON.parse(localStorage.getItem("upcoming_movies")).map((value, idx) => {
+            return <Card key={idx} {...value} />;
+          })}
+        </div>
+      </div>
     </div>
   );
 }
+/*
+
+
+*/

@@ -4,7 +4,7 @@ import Byebye from "../views/Byebye";
 import SearchButton from "./SearchButton";
 import Search from "../views/Search";
 
-export default function Usernavbar({ setPrincipal, principal }) {
+export default function Usernavbar({ setPrincipal, principal,logout }) {
   const [colorChange, setColorchange] = useState(false);
   const [clicked, setClicked] = useState(false);
 
@@ -63,11 +63,13 @@ export default function Usernavbar({ setPrincipal, principal }) {
               Movies
             </NavLink>
           </ul>
+          <div className='transition duration-700 ease-in-out'>
           {clicked ? (
-            <Search />
+            <Search logout={logout}/>
           ) : (
-            <SearchButton setClicked={setClicked} className="absolute" />
+            <SearchButton setClicked={setClicked} />
           )}
+          </div>
         </div>
       </div>
     </div>
