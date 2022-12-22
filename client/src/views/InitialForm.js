@@ -64,13 +64,13 @@ export default function InitialForm({ login }) {
         <button className="bg-red-500 h-[6h] w-[15w] align-self-center rounded-md transition-all-500 hover:transition-all-1000 p-2 hover:scale-110 hover:text-black">
           Login
         </button>
-        <div className="inline-flex justify-evenly">
-          <p className="pr-5 pl-5">
+        <div className="inline-flex sm:pl-10 justify-around">
+          <p className="p-5">
             Still without an account?
             </p>
-          <p className="hover:scale-110">
+          <p className="hover:scale-110 sm:p-5 p-2 sm:mt-0 mt-6 w-[70vw] sm:w-auto">
             <Link
-              className="text-decoration-none p-2 bg-red-500 bg-opacity-40 shadow-md rounded-xl text-red-500 hover:text-orange-500 "
+              className="text-decoration-none p-2 bg-red-500 bg-opacity-60 shadow-md shadow-white rounded-xl text-white hover:text-black "
               exact="true"
               to="/register"
             >

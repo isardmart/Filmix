@@ -84,7 +84,7 @@ export default function Register(props) {
             </p>
             <p className="hover:scale-110">
               <Link
-                className="text-decoration-none p-2 bg-red-500 bg-opacity-40 shadow-md rounded-xl text-red-500 hover:text-orange-500 "
+                className="text-decoration-none p-2 bg-red-500 bg-opacity-60 shadow-md shadow-white rounded-xl text-white hover:text-black "
                 exact="true"
                 to="/login"
               >

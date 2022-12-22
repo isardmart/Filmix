@@ -1,11 +1,10 @@
-import React,{useState} from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react'
 
 export default function SearchButton({setClicked}) {
   return (
     
     <button
-    className='absolute top-[70vh] sm:right-auto right-[43vw] sm:top-0 sm:relative sm:px-15'
+    className='absolute top-[75vh] sm:right-auto right-[43vw] sm:top-0 sm:relative sm:px-15'
     onClick={()=>setClicked(true)}
     >
       <svg
