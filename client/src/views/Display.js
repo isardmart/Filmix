@@ -31,11 +31,11 @@ export default function Display({
   } = media;
   //top-[128px]
   return (
-    <div className="mt-24 overflow-x-scroll sm:overflow-y-scroll sticky top-10 sm:top-0 z-50 hover:opacity-100 sm:overflow-hidden transition-all duration-700 sm:opacity-50 sm:absolute display sm:mt-[64px] sm:left-[0px] sm:h-auto sm:pb-[400px] sm:w-[100vw] sm:mb-[100px] ">
-      <div className="h-[10px] w-[200vw] sm:h-[30px] sm:w-[100vw] sm:top-0 bg-gradient-to-b from-red-600 to-black"></div>
-      <div className="flex flex-row gap-10 w-[200vw]">
+    <div className="mt-24 overflow-x-scroll sm:overflow-y-scroll sticky top-10 sm:top-0 z-50 hover:opacity-100 sm:overflow-hidden transition-all duration-700 sm:opacity-50 sm:absolute display sm:mt-[69px] sm:left-[0px] sm:h-auto sm:pb-[0px] sm:w-[100vw] sm:mb-[0px] ">
+      <div className="h-[10px] w-[300vw] sm:h-[30px] sm:w-[100vw] sm:top-0 bg-gradient-to-b from-red-600 to-black"></div>
+      <div className="flex flex-row gap-10 w-[300vw]">
         <button
-          className="absolute px-1 -right-[90vw] sm:right-20 rounded-md bg-red-600 text-black"
+          className="absolute px-1 -right-[190vw] sm:right-20 rounded-md bg-red-600 text-black"
           onClick={() => {
             setIsReady(false);
             setIsReady2(false);
@@ -44,8 +44,8 @@ export default function Display({
         >
           X
         </button>
-        <div className="sm:flex-row w-[100vw]  bg-black flex-row gap-5 flex justify-between px-10 sm:px-20 sm:gap-2 py-2">
-          <div className="sm:w-[30vw] ">
+        <div className="sm:flex-row w-[300vw] sm:w-auto  bg-black flex-row gap-5 flex justify-between px-10 sm:px-20 sm:gap-2 py-2">
+          <div className="sm:w-[30vw] w-[70vw] ">
             <h1 className="font-bold text-4xl sm:pl-3 text-white pb-3">{Title}</h1>
             {media2 == null ? (
               <img
@@ -61,29 +61,29 @@ export default function Display({
               />
             )}
           </div>
-          <div className="w-[70vw] sm:w-[25vw] flex flex-col sm:gap-3 sm:text-lg ">
-            <div>
+          <div className="w-[90vw] sm:w-[25vw] flex flex-col sm:gap-3 sm:text-lg ">
+            <div className=" hidden sm:block">
               <h1 className="text-red-500"> Director:</h1> {Director}
             </div>
-            <div>
+            <div >
               <h1 className="text-red-500"> Writer:</h1> {Writer}
             </div>
             <div>
               <h1 className="text-red-500">Actors:</h1> {Actors}
             </div>
-            <div>
+            <div className=" hidden sm:block">
               <h1 className="text-red-500">Year:</h1> {Year}
             </div>
             <div>
               <h1 className="text-red-500">Genre:</h1> {Genre}
             </div>
-            <div>
+            <div className=" hidden sm:block">
               <h1 className="text-red-500">Country:</h1> {Country}
             </div>
             <h1 className="text-red-500">Plot:</h1>
             <p>{Plot}</p>
           </div>
-          <div className="w-[25vw] sm:text-lg">
+          <div className="w-[90vw] sm:text-lg">
             <div>
               <h1 className="text-red-500">Runtime: </h1> {Runtime}
             </div>
@@ -114,12 +114,12 @@ export default function Display({
           </div>
         </div>
       </div>
-      <div className="h-[20px] top-[0px] w-[100vw] bg-gradient-to-t from-red-600 to-black"></div>
-      <div className="h-[20px] top-[0px] w-[100vw] bg-gradient-to-b from-red-600 to-transparent"></div>
-      <div className="fixed bottom-0 w-[100vw]  ">
-        <div className="flex flex-col">
+      <div className="h-[20px] top-[0px] w-[300vw] bg-gradient-to-t from-red-600 to-black"></div>
+      <div className="h-[20px] top-[0px] w-[300vw] bg-gradient-to-b from-red-600 to-transparent"></div>
+      <div className="fixed bottom-0  w-[100vw]  ">
+        <div className="block">
           <div className="h-[20px] top-[0px] w-[100vw] bg-gradient-to-t from-red-600 to-transparent"></div>
-          <div className=" bg-gradient-to-b h-[20px] from-red-600 to-black "></div>
+          <div className="relative bg-gradient-to-b bottom-0 h-[20px] from-red-600 to-black "></div>
           <Footer logout={logout} />
         </div>
       </div>

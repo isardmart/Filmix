@@ -18,11 +18,11 @@ export default function Footer({ logout }) {
     }, 1500);
   };
   return (
-    <div className="z-50">{message}
+    <div className="z-0">{message}
     <div className="h-[10vh]  bg-black">
       <button
       onClick={()=>handleLogout()}
-      className="flex justify-center w-[100px] mx-auto my-7 hover:scale-110 p-1.5 text-white bg-red-500 rounded-full no-underline"
+      className="flex justify-center w-[100px] mx-auto sm:py-2 hover:scale-110 p-1.5 text-white bg-red-500 rounded-full no-underline bottom-2"
       >
         Log Out
       </button>
